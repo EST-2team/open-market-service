@@ -36,7 +36,7 @@ function renderCartItem(items) {
                                     <span class="sr-only">가격: </span>${item.product.price.toLocaleString()}원
                                 </p>
                                 <p class="cart__delivery-info">
-                                    <span class="sr-only">배송: </span>${item.product.shipping_method} / ${item.product.shipping_fee || "무료배송"}
+                                    <span class="sr-only">배송: </span>${item.product.shipping_method === "PARCEL" ? "택배배송" : "직접배송"} / ${item.product.shipping_fee || "무료배송"}
                                 </p>
                             </div>
                         </td>
