@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+</head>
+<body>
+    <form id="signup-form">
+        <label>아이디
+        <input type="text" name="userid" required/>
+        </label>
+
+        <label>비밀번호
+            <input type="password" name="password" required/>
+        </label>
+
+
+        <label>비밀번호 재확인
+            <input type="password" name="passwordCheck" required/>
+        </label>
+
+
+        <label>이름
+            <input type="text" name="userName" required/>
+        </label>
+
+
+        <label for="mobileNumber">휴대폰번호</label>
+            <div class="mobileNumber">
+                <select id="mobile1">
+                    <option value="010">010</option>
+                    <option value="011">011</option>
+                    <option value="019">019</option>
+                </select>
+                <input type="text" name="mobile2" maxlength="4" pattern="\d{3,4}" inputmode="numeric" required />
+                <input type="text" name="mobile3" maxlength="4" pattern="\d{4}" inputmode="numeric" required />
+            </div>
+    </form>
+</body>
+</html>
