@@ -40,11 +40,11 @@ function renderCartItem(items) {
                                 </p>
                             </div>
                         </td>
-                        <td class="cart__product-amount-cell">
-                            <div class="cart__amount-container">
-                                <button class="cart__amount--minus" type="button" aria-label="${item.product.name} 수량 감소 버튼"></button>
-                                <span class="cart__amount" aria-label="현재 수량">${item.quantity}</span>
-                                <button class="cart__amount--plus" type="button" aria-label="${item.product.name} 수량 증가 버튼"></button>
+                        <td class="cart__product-quantity-cell">
+                            <div class="cart__quantity-container">
+                                <button class="quantity-modal__btn cart__quantity--minus" type="button" aria-label="${item.product.name} 수량 감소 버튼"></button>
+                                <span class="cart__quantity" aria-label="현재 수량">${item.quantity}</span>
+                                <button class="quantity-modal__btn cart__quantity--plus" type="button" aria-label="${item.product.name} 수량 증가 버튼"></button>
                             </div>
                         </td>
                         <td class="cart__product-price-cell">

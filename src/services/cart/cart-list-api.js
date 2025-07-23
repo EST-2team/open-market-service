@@ -1,5 +1,7 @@
 import { renderCartItem } from "../../components/cart/cart-item.js";
 
+let cartData = [];
+
 const fetchCartList = async () => {
     try {
         const accessToken = localStorage.getItem("access");
@@ -18,11 +20,15 @@ const fetchCartList = async () => {
         }
 
         const data = await res.json();
-        renderCartItem(data.results);
+        cartData = data.results;
+
+        renderCartItem(cartData);
     } catch (error) {
         console.error(error);
         alert(error);
     }
 };
 
-export { fetchCartList };
+const getCartData = () => cartData;
+
+export { fetchCartList, getCartData };
