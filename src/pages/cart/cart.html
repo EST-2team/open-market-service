@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>장바구니 - HODU</title>
+    </head>
+    <body>
+        <main class="cart">
+            <h2 class="cart__title">장바구니</h2>
+
+            <section class="cart__table-section">
+                <table class="cart__table">
+                    <caption class="sr-only">
+                        장바구니에 담긴 상품들의 정보, 수량, 금액을 보여주는 표
+                    </caption>
+
+                    <thead class="cart__header">
+                        <tr>
+                            <th class="cart__checkbox-col">
+                                <label class="sr-only" for="checkAll"
+                                    >전체 선택</label
+                                >
+                                <input
+                                    id="checkAll"
+                                    type="checkbox"
+                                    class="cart__checkbox-all"
+                                />
+                            </th>
+                            <th class="cart__product-col">상품정보</th>
+                            <th class="cart__quantity-col">수량</th>
+                            <th class="cart__price-col">상품금액</th>
+                        </tr>
+                    </thead>
+                    <tbody class="cart__list"></tbody>
+                </table>
+            </section>
+
+            <section class="cart__summary">
+                <dl class="cart__price-list">
+                    <div class="cart__total-price">
+                        <dt class="cart__label">총 상품금액</dt>
+                        <dd class="cart__amount"></dd>
+                    </div>
+                    <div class="cart__discount">
+                        <dt class="cart__label">상품 할인</dt>
+                        <dd class="cart__amount"></dd>
+                    </div>
+                    <div class="cart__delivery-fee">
+                        <dt class="cart__label">배송비</dt>
+                        <dd class="cart__amount"></dd>
+                    </div>
+                    <div class="cart__final-amount">
+                        <dt class="cart__label cart__label--bold">
+                            결제 예정 금액
+                        </dt>
+                        <dd class="cart__amount cart__amount--final"></dd>
+                    </div>
+                </dl>
+            </section>
+
+            <a class="cart__payment-btn" href="#">주문하기</a>
+        </main>
+    </body>
+</html>
