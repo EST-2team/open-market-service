@@ -36,15 +36,15 @@ function renderCartItem(items) {
                                     <span class="sr-only">가격: </span>${item.product.price.toLocaleString()}원
                                 </p>
                                 <p class="cart__delivery-info">
-                                    <span class="sr-only">배송: </span>${item.product.shipping_method} / ${item.product.shipping_fee || "무료배송"}
+                                    <span class="sr-only">배송: </span>${item.product.shipping_method === "PARCEL" ? "택배배송" : "직접배송"} / ${item.product.shipping_fee || "무료배송"}
                                 </p>
                             </div>
                         </td>
-                        <td class="cart__product-amount-cell">
-                            <div class="cart__amount-container">
-                                <button class="cart__amount--minus" type="button" aria-label="${item.product.name} 수량 감소 버튼"></button>
-                                <span class="cart__amount" aria-label="현재 수량">${item.quantity}</span>
-                                <button class="cart__amount--plus" type="button" aria-label="${item.product.name} 수량 증가 버튼"></button>
+                        <td class="cart__product-quantity-cell">
+                            <div class="cart__quantity-container">
+                                <button class="quantity-modal__btn cart__quantity--minus" type="button" aria-label="${item.product.name} 수량 감소 버튼"></button>
+                                <span class="cart__quantity" aria-label="현재 수량">${item.quantity}</span>
+                                <button class="quantity-modal__btn cart__quantity--plus" type="button" aria-label="${item.product.name} 수량 증가 버튼"></button>
                             </div>
                         </td>
                         <td class="cart__product-price-cell">
