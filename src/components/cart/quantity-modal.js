@@ -1,11 +1,11 @@
-import { getCartData } from "../../services/cart/cart-list-api.js";
+import { getCartData } from "../../services/cart/cart-api.js";
 
 function quantityModal(itemId) {
     let cartData = getCartData();
     const item = cartData.find((item) => item.id === itemId);
 
     return `<div class="cart__modal--close">
-                <button onclick="closeModal()"><img src="../../assets/icons/icon-delete.svg" alt="창 닫기" /></button>
+                <button class="cart__modal--cancel" type="button" aria-label="창 닫기"></button>
             </div>
             <div class="cart__quantity-modal--control">
                 <button class="cart__modal-quantity--minus" data-item-id="${item.id}" type="button" aria-label="${item.product.name} 수량 감소 버튼"></button>

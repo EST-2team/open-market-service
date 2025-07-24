@@ -1,6 +1,7 @@
-import { getCartData } from "./cart-list-api.js";
+import { deleteCartItem, fetchCartList, getCartData } from "./cart-api.js";
 import { renderCartItem } from "../../components/cart/cart-item.js";
 import { quantityModal } from "../../components/cart/quantity-modal.js";
+import { deleteModal } from "../../components/cart/delete-modal.js";
 
 function decreaseQuantity() {
     const $quantityInput = document.querySelector(".cart__modal-quantity");
@@ -66,6 +67,11 @@ function closeModal() {
     $cartModal.innerHTML = "";
 }
 
+function deleteCartItemService(itemId) {
+    const $cartModal = document.querySelector(".cart__modal");
+    $cartModal.innerHTML = deleteModal(itemId);
+}
+
 function initCartModalListener() {
     const $cartTableSection = document.querySelector(".cart__table-section");
     if (!$cartTableSection) {
@@ -73,7 +79,7 @@ function initCartModalListener() {
         return;
     }
 
-    $cartTableSection.addEventListener("click", (e) => {
+    $cartTableSection.addEventListener("click", async (e) => {
         const itemId = parseInt(e.target.getAttribute("data-item-id"));
 
         // 수량 모달 버튼 클릭 (장바구니 목록에서)
@@ -105,9 +111,24 @@ function initCartModalListener() {
         // 모달 수량 수정 버튼
         else if (e.target.classList.contains("cart__modal-quantity--update")) {
             quantityUpdate(itemId);
-        } else if (
-            e.target.classList.contains("cart__modal-quantity--cancel")
+        }
+        // 취소
+        else if (
+            e.target.classList.contains("cart__modal--cancel") ||
+            e.target.classList.contains("cart__modal-quantity--cancel") ||
+            e.target.classList.contains("cart__modal-delete--cancel")
         ) {
+            closeModal();
+        }
+        // 삭제 버튼
+        else if (e.target.classList.contains("cart__delete-btn")) {
+            deleteCartItemService(itemId);
+        }
+        // 삭제 확인
+        else if (e.target.classList.contains("cart__modal-delete--update")) {
+            const itemId = parseInt(e.target.getAttribute("data-item-id"));
+            await deleteCartItem(itemId);
+            await fetchCartList();
             closeModal();
         }
     });
