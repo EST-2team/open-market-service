@@ -105,6 +105,10 @@ function initCartModalListener() {
         // 모달 수량 수정 버튼
         else if (e.target.classList.contains("cart__modal-quantity--update")) {
             quantityUpdate(itemId);
+        } else if (
+            e.target.classList.contains("cart__modal-quantity--cancel")
+        ) {
+            closeModal();
         }
     });
 }
