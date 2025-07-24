@@ -58,7 +58,7 @@ function renderCartItem(items) {
                             </div>
                         </td>
                         <td class="cart__delete-cell">
-                            <button type="button" class="cart__delete-btn" aria-label="상품 삭제"><img src="../../assets/icons/icon-delete.svg" alt="" /></button>
+                            <button type="button" class="cart__delete-btn" data-item-id="${item.id}" aria-label="상품 삭제"></button>
                         </td>
                         `;
 
