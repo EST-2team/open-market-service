@@ -7,7 +7,7 @@ function deleteModal(itemId) {
             </div>
             <div class="cart__modal-btn-group">
                 <button class="cart__modal-delete--cancel" type="button">취소</button>
-                <button class="cart__modal-delete--update" type="button" data-item-id="${itemId}">확인</button>
+                <button class="cart__modal-delete--update" data-item-id="${itemId}" type="button">확인</button>
             </div>
            `;
 }
