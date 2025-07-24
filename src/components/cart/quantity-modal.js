@@ -3,7 +3,6 @@ import { getCartData } from "../../services/cart/cart-list-api.js";
 function quantityModal(itemId) {
     let cartData = getCartData();
     const item = cartData.find((item) => item.id === itemId);
-    console.log(item);
 
     return `<div class="cart__modal--close">
                 <button onclick="closeModal()"><img src="../../assets/icons/icon-delete.svg" alt="창 닫기" /></button>
