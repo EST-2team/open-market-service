@@ -21,11 +21,11 @@ function renderCartItem(items) {
 
         tr.innerHTML = `<td class="cart__checkbox-cell">
                             <label class="sr-only" for="${checkboxId}">${item.product.name} 선택</label>
-                            <input type="checkbox" id="${checkboxId}">
+                            <input type="checkbox" id="${checkboxId}" />
                         </td>
                         <td class="cart__product-cell">
                             <div class="cart__product-image-container">
-                                <img src="${item.product.image}" alt="${item.product.name}">
+                                <img src="${item.product.image}" alt="${item.product.name}" />
                             </div>
                             <div class="cart__product-info">
                                 <p class="cart__product-seller">
@@ -42,9 +42,9 @@ function renderCartItem(items) {
                         </td>
                         <td class="cart__product-quantity-cell">
                             <div class="cart__quantity-container">
-                                <button class="quantity-modal__btn cart__quantity--minus" type="button" aria-label="${item.product.name} 수량 감소 버튼"></button>
+                                <button class="quantity-modal__btn cart__quantity--minus" data-item-id="${item.id}" type="button" aria-label="${item.product.name} 수량 감소 버튼"></button>
                                 <span class="cart__quantity" aria-label="현재 수량">${item.quantity}</span>
-                                <button class="quantity-modal__btn cart__quantity--plus" type="button" aria-label="${item.product.name} 수량 증가 버튼"></button>
+                                <button class="quantity-modal__btn cart__quantity--plus" data-item-id="${item.id}" type="button" aria-label="${item.product.name} 수량 증가 버튼"></button>
                             </div>
                         </td>
                         <td class="cart__product-price-cell">
@@ -58,7 +58,7 @@ function renderCartItem(items) {
                             </div>
                         </td>
                         <td class="cart__delete-cell">
-                            <button type="button" class="cart__delete-btn" aria-label="상품 삭제"><img src="../../assets/icons/icon-delete.svg" alt=""></button>
+                            <button type="button" class="cart__delete-btn" aria-label="상품 삭제"><img src="../../assets/icons/icon-delete.svg" alt="" /></button>
                         </td>
                         `;
 
