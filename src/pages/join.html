@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>회원가입</title>
+    </head>
+    <body>
+        <main>
+            <form class="signup-form" id="signup-form" novalidate>
+                <fieldset class="signup-form__field">
+                    <legend class="signup-form__legend">아이디</legend>
+                    <div class="signup-form__userid-group">
+                        <label for="username" class="signup-form__label sr-only"
+                            >아이디</label
+                        >
+                        <input
+                            type="text"
+                            id="username"
+                            name="userid"
+                            required
+                            class="signup-form__input signup-form__input--userid"
+                            autocomplete="username"
+                            aria-describedby="userid-check-msg"
+                        />
+                        <button
+                            type="button"
+                            class="signup-form__button signup-form__button--id-check"
+                            aria-label="아이디 중복확인"
+                        >
+                            중복확인
+                        </button>
+                    </div>
+                    <div
+                        id="userid-check-msg"
+                        class="signup-form__msg"
+                        aria-live="polite"
+                    ></div>
+                </fieldset>
+
+                <fieldset class="signup-form__field">
+                    <legend class="signup-form__legend">비밀번호</legend>
+                    <label for="password" class="signup-form__label sr-only"
+                        >비밀번호</label
+                    >
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        required
+                        class="signup-form__input signup-form__input--password"
+                        autocomplete="new-password"
+                        aria-describedby="password-msg"
+                    />
+                    <div
+                        id="password-msg"
+                        class="signup-form__msg"
+                        aria-live="polite"
+                    ></div>
+                </fieldset>
+
+                <fieldset class="signup-form__field">
+                    <legend class="signup-form__legend">비밀번호 재확인</legend>
+                    <label
+                        for="passwordCheck"
+                        class="signup-form__label sr-only"
+                        >비밀번호 재확인 입력</label
+                    >
+                    <input
+                        type="password"
+                        id="passwordCheck"
+                        name="passwordCheck"
+                        required
+                        class="signup-form__input signup-form__input--password-check"
+                        autocomplete="new-password"
+                        aria-describedby="passwordCheck-msg"
+                    />
+                    <div
+                        id="passwordCheck-msg"
+                        class="signup-form__msg"
+                        aria-live="polite"
+                    ></div>
+                </fieldset>
+
+                <fieldset class="signup-form__field">
+                    <legend class="signup-form__legend">이름</legend>
+                    <label for="name" class="signup-form__label sr-only"
+                        >이름</label
+                    >
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        class="signup-form__input signup-form__input--username"
+                        autocomplete="name"
+                    />
+                </fieldset>
+
+                <fieldset
+                    class="signup-form__field"
+                    aria-label="휴대폰 번호 입력"
+                >
+                    <legend class="signup-form__legend">휴대폰번호</legend>
+
+                    <label for="mobile1" class="signup-form__label sr-only"
+                        >앞자리</label
+                    >
+                    <select
+                        id="mobile1"
+                        name="mobile1"
+                        class="signup-form__select signup-form__select--mobile1"
+                        required
+                    >
+                        <option value="010">010</option>
+                        <option value="011">011</option>
+                        <option value="019">019</option>
+                    </select>
+
+                    <label for="mobile2" class="signup-form__label sr-only"
+                        >중간자리</label
+                    >
+                    <input
+                        type="tel"
+                        id="mobile2"
+                        name="mobile2"
+                        maxlength="4"
+                        pattern="\d{3,4}"
+                        inputmode="numeric"
+                        required
+                        class="signup-form__input signup-form__input--mobile2"
+                        aria-describedby="mobile2-msg"
+                    />
+                    <div
+                        id="mobile2-msg"
+                        class="signup-form__msg"
+                        aria-live="polite"
+                    ></div>
+
+                    <label for="mobile3" class="signup-form__label sr-only"
+                        >끝자리</label
+                    >
+                    <input
+                        type="tel"
+                        id="mobile3"
+                        name="mobile3"
+                        maxlength="4"
+                        pattern="\d{4}"
+                        inputmode="numeric"
+                        required
+                        class="signup-form__input signup-form__input--mobile3"
+                        aria-describedby="mobile3-msg"
+                    />
+                    <div
+                        id="mobile3-msg"
+                        class="signup-form__msg"
+                        aria-live="polite"
+                    ></div>
+                </fieldset>
+
+                <fieldset
+                    class="signup-form__agreement"
+                    aria-label="이용약관 동의"
+                >
+                    <legend class="sr-only">
+                        이용약관 및 개인정보처리방침 동의
+                    </legend>
+                    <label for="agree" class="signup-form__agreement-label">
+                        <input
+                            type="checkbox"
+                            id="agree"
+                            class="signup-form__checkbox"
+                            required
+                        />
+                        호두샵의 <a href="#">이용약관</a> 및
+                        <a href="#">개인정보처리방침</a>에 대한 내용을
+                        확인하였고 동의합니다.
+                    </label>
+                </fieldset>
+
+                <button type="submit" class="signup-form__submit-button">
+                    가입하기
+                </button>
+            </form>
+        </main>
+    </body>
+</html>
