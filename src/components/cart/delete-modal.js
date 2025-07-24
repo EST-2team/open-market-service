@@ -3,7 +3,7 @@ function deleteModal(itemId) {
                 <button class="cart__modal--cancel" type="button" aria-label="창 닫기"></button>
             </div>
             <div class="cart__delete-modal-text">
-                <span>상품을 삭제하시겠습니까?</span>
+                <h3>상품을 삭제하시겠습니까?</h3>
             </div>
             <div class="cart__modal-btn-group">
                 <button class="cart__modal-delete--cancel" type="button">취소</button>
