@@ -5,6 +5,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>상품 목록 페이지</title>
     </head>
+    <style>
+        li {
+            list-style: none;
+        }
+        .banner-wrap {
+            overflow: hidden;
+            width: 100vw;
+            height: 500px;
+            background-color: aqua;
+        }
+        .banner-slides {
+            width: calc(100vw * 5);
+            height: 500px;
+        }
+        .banner-slide {
+            float: left;
+            height: 500px;
+            width: 100vw;
+        }
+    </style>
     <body>
         <!-- <header></header> -->
         <main>
@@ -12,11 +32,13 @@
                 <h2 class="sr-only">상품에 대한 이벤트 배너</h2>
                 <button type="button" class="banner__prev-btn"></button>
                 <div class="banner-wrap">
-                    <div class="banner-slide" aria-label="1/5"></div>
-                    <div class="banner-slide" aria-label="2/5"></div>
-                    <div class="banner-slide" aria-label="3/5"></div>
-                    <div class="banner-slide" aria-label="4/5"></div>
-                    <div class="banner-slide" aria-label="5/5"></div>
+                    <div class="banner-slides">
+                        <div class="banner-slide" aria-label="1/5"></div>
+                        <div class="banner-slide" aria-label="2/5"></div>
+                        <div class="banner-slide" aria-label="3/5"></div>
+                        <div class="banner-slide" aria-label="4/5"></div>
+                        <div class="banner-slide" aria-label="5/5"></div>
+                    </div>
                 </div>
                 <button type="button" class="banner__next-btn"></button>
 
@@ -64,5 +86,10 @@
                 <ul class="product-list"></ul>
             </section>
         </main>
+        <script src="../components/project-list/product- banner.js"></script>
+        <script
+            type="module"
+            src="../services/product-list/product-list-index.js"
+        ></script>
     </body>
 </html>
