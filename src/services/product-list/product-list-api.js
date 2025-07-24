@@ -1,4 +1,4 @@
-import { renderProduct } from "../../components/project-list/product-list.js";
+import { renderProduct } from "../../components/product-list/product-list.js";
 
 let productData = [];
 
