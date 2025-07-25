@@ -45,7 +45,7 @@ export function duplicateUsername() {
         }
 
         checkMsg.textContent = "사용 가능한 아이디입니다.";
-        checkMsg.style.color = "green";
+        checkMsg.style.color = "#21BF48";
     });
 }
 
@@ -113,7 +113,7 @@ export function passwordMatch() {
     }
 
     passwordCheckMsg.textContent = "비밀번호가 일치합니다.";
-    passwordCheckMsg.style.color = "green";
+    passwordCheckMsg.style.color = "#21BF48";
     return true;
 }
 

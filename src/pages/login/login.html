@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>로그인</title>
+        <style>
+            .hidden {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- <header></header> -->
+        <main>
+            <div class="login-container">
+                <div class="login-tab">
+                    <button class="tab-btn active" data-type="buyer">
+                        구매회원 로그인
+                    </button>
+                    <button class="tab-btn" data-type="seller">
+                        판매회원 로그인
+                    </button>
+                </div>
+                <form id="buyer-form" class="login-form">
+                    <input type="text" placeholder="아이디" required />
+                    <input type="password" placeholder="비밀번호" required />
+                </form>
+
+                <form id="seller-form" class="login-form hidden">
+                    <input type="text" placeholder="판매자아이디" required />
+                    <input type="password" placeholder="비밀번호" required />
+                </form>
+            </div>
+        </main>
+        <!-- <footer></footer> -->
+        <script src="../../services/login/login-index.js"></script>
+    </body>
+</html>

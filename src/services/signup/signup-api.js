@@ -1,4 +1,4 @@
-let signup = async ({ username, password, name, phone_number }) => {
+export const signup = async ({ username, password, name, phone_number }) => {
     try {
         const url =
             "https://api.wenivops.co.kr/services/open-market/accounts/buyer/signup/";
