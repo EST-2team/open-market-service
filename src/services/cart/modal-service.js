@@ -65,7 +65,6 @@ async function quantityUpdate(itemId) {
 
     item.quantity = document.querySelector(".cart__modal-quantity").value;
     await updateCartItemQuantity(item);
-    // renderCartItem(cartData);
     closeModal();
     await refreshRenderView();
 }

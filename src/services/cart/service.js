@@ -1,10 +1,10 @@
 import { getCartData } from "./cart-api.js";
 import { renderPaymentInfo } from "../../components/cart/payment-info.js";
 
+const orderPageUrl = `../pages/order.html?order_type=cart_order&product_list=`;
+
 function singleOrder(itemId) {
-    const orderPageUrl = `../pages/order.html`;
-    const queryParams = `?order_type=cart_order&product_list=${itemId}`;
-    window.location.href = orderPageUrl + queryParams;
+    window.location.href = orderPageUrl + itemId;
 }
 
 function multiOrder() {
@@ -18,9 +18,7 @@ function multiOrder() {
         item.getAttribute("data-item-id")
     );
 
-    const orderPageUrl = `../pages/order.html`;
-    const queryParams = `?order_type=cart_order&product_list=${itemIds.join(",")}`;
-    window.location.href = orderPageUrl + queryParams;
+    window.location.href = orderPageUrl + itemIds.join(",");
 }
 
 function handleSelectAll(checkboxAll) {
