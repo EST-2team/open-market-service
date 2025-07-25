@@ -21,7 +21,7 @@ function renderCartItem(items) {
 
         tr.innerHTML = `<td class="cart__checkbox-cell">
                             <label class="sr-only" for="${checkboxId}">${item.product.name} 선택</label>
-                            <input type="checkbox" id="${checkboxId}" />
+                            <input id="${checkboxId}" type="checkbox" />
                         </td>
                         <td class="cart__product-cell">
                             <div class="cart__product-image-container">
@@ -58,7 +58,7 @@ function renderCartItem(items) {
                             </div>
                         </td>
                         <td class="cart__delete-cell">
-                            <button type="button" class="cart__delete-btn" data-item-id="${item.id}" aria-label="상품 삭제"></button>
+                            <button class="cart__delete-btn" data-item-id="${item.id}" type="button" aria-label="상품 삭제"></button>
                         </td>
                         `;
 

@@ -1,4 +1,9 @@
-import { deleteCartItem, fetchCartList, getCartData } from "./cart-api.js";
+import {
+    deleteCartItem,
+    fetchCartList,
+    getCartData,
+    updateCartItemQuantity,
+} from "./cart-api.js";
 import { renderCartItem } from "../../components/cart/cart-item.js";
 import { quantityModal } from "../../components/cart/quantity-modal.js";
 import { deleteModal } from "../../components/cart/delete-modal.js";
@@ -38,7 +43,7 @@ function plusBtnDisabled(itemId, currentValue) {
     }
 }
 
-function quantityUpdate(itemId) {
+async function quantityUpdate(itemId) {
     const cartData = getCartData();
     const item = cartData.find((item) => item.id === itemId);
 
@@ -57,7 +62,7 @@ function quantityUpdate(itemId) {
     }
 
     item.quantity = document.querySelector(".cart__modal-quantity").value;
-
+    await updateCartItemQuantity(item);
     renderCartItem(cartData);
     closeModal();
 }
@@ -110,7 +115,7 @@ function initCartModalListener() {
         }
         // 모달 수량 수정 버튼
         else if (e.target.classList.contains("cart__modal-quantity--update")) {
-            quantityUpdate(itemId);
+            await quantityUpdate(itemId);
         }
         // 취소
         else if (
