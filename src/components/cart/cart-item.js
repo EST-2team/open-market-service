@@ -54,7 +54,7 @@ function renderCartItem(items) {
                                     ${(item.product.price * item.quantity).toLocaleString()}원
                                 </p>
 
-                                <button class="cart__payment-btn" type="button" onclick="orderItem([${item.id}])">주문하기</button>
+                                <button class="cart__payment-btn--single" data-item-id="${item.id}" type="button">주문하기</button>
                             </div>
                         </td>
                         <td class="cart__delete-cell">
