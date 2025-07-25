@@ -8,6 +8,7 @@ import { renderCartItem } from "../../components/cart/cart-item.js";
 import { renderQuantityModal } from "../../components/cart/quantity-modal.js";
 import { renderDeleteModal } from "../../components/cart/delete-modal.js";
 import { renderPaymentInfo } from "../../components/cart/payment-info.js";
+import { checkedIds, updatePaymentInfo } from "./service.js";
 
 function decreaseQuantity() {
     const $quantityInput = document.querySelector(".cart__modal-quantity");
@@ -64,8 +65,8 @@ async function quantityUpdate(itemId) {
 
     item.quantity = document.querySelector(".cart__modal-quantity").value;
     await updateCartItemQuantity(item);
-    renderCartItem(cartData);
     closeModal();
+    await refreshRenderView();
 }
 
 function closeModal() {
@@ -76,6 +77,26 @@ function closeModal() {
 function deleteCartItemService(itemId) {
     const $cartModal = document.querySelector(".cart__modal");
     $cartModal.innerHTML = renderDeleteModal(itemId);
+}
+
+async function refreshRenderView() {
+    const checkedItemIds = checkedIds();
+
+    await fetchCartList();
+
+    const cartData = getCartData();
+    const checkedItems = cartData.filter((item) =>
+        checkedItemIds.includes(item.id)
+    );
+
+    //장바구니 목록 렌더링 후 이전 체크된 data-item-id 값을 이용해서 다시 checked=true로 상태변경
+    const $checkbox = document.querySelectorAll(".cart__checkbox");
+    Array.from($checkbox)
+        .filter((item) =>
+            checkedItemIds.includes(parseInt(item.getAttribute("data-item-id")))
+        )
+        .forEach((item) => (item.checked = true));
+    renderPaymentInfo(checkedItems);
 }
 
 function initCartModalListener() {
@@ -117,7 +138,6 @@ function initCartModalListener() {
         // 모달 수량 수정 버튼
         else if (e.target.classList.contains("cart__modal-quantity--update")) {
             await quantityUpdate(itemId);
-            renderPaymentInfo(getCartData());
         }
         // 취소
         else if (
@@ -135,9 +155,8 @@ function initCartModalListener() {
         else if (e.target.classList.contains("cart__modal-delete--update")) {
             const itemId = parseInt(e.target.getAttribute("data-item-id"));
             await deleteCartItem(itemId);
-            await fetchCartList();
             closeModal();
-            renderPaymentInfo(getCartData());
+            await refreshRenderView();
         }
     });
 }
