@@ -1,0 +1,25 @@
+/* 스크린 리더에서만 읽히고 화면에 보이지 않도록 */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    border: 0;
+    clip: rect(0 0 0 0);
+}
+/* 요소의 크기를 넘친 텍스트 말줄임 처리 */
+.ellipsis {
+    overflow: hidden; /* 부모 밖으로 빠나온 텍스를 숨김 */
+    white-space: nowrap; /* 줄바꿈 안되게 */
+    text-overflow: ellipsis;
+}
+/* 특정 라인부터 말줄임 처리 */
+.multi-ellipsis {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}

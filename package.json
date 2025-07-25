@@ -4,10 +4,10 @@
         "sass": "^1.89.2"
     },
     "scripts": {
-        "css:build": "sass src/styles/main.scss src/assets/css/main.css --style=compressed --no-source-map",
-        "css:dev": "sass src/styles/main.scss src/assets/css/main.css --watch --source-map",
+        "css:build": "sass src/styles/style.scss src/assets/css/style.css --style=compressed --no-source-map",
+        "css:dev": "sass src/styles/style.scss src/assets/css/style.css --watch --source-map",
         "css:format": "prettier --write \"src/styles/**/*.scss\"",
-        "css:check": "sass --check src/styles/main.scss",
+        "css:check": "sass src/styles/style.scss --no-source-map",
         "build": "npm run css:build",
         "dev": "npm run css:dev",
         "start": "npm run css:check && npm run css:format && npm run dev",
