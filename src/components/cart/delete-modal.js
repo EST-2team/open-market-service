@@ -1,4 +1,4 @@
-function deleteModal(itemId) {
+function renderDeleteModal(itemId) {
     return `<div class="cart__modal--close">
                 <button class="cart__modal--cancel" type="button" aria-label="창 닫기"></button>
             </div>
@@ -12,4 +12,4 @@ function deleteModal(itemId) {
            `;
 }
 
-export { deleteModal };
+export { renderDeleteModal };

@@ -30,7 +30,7 @@
                             </th>
                             <th class="cart__product-col">상품정보</th>
                             <th class="cart__quantity-col">수량</th>
-                            <th class="cart__price-col">상품금액</th>
+                            <th class="cart__payment-col">상품금액</th>
                             <th class="cart__delete-col">
                                 <span class="sr-only">삭제</span>
                             </th>
@@ -42,27 +42,8 @@
             </section>
 
             <section class="cart__summary">
-                <h3 class="sr-only">장바구니 결제 예정 금액</h3>
-                <dl class="cart__price-list">
-                    <div class="cart__total-price">
-                        <dt class="cart__label">총 상품금액</dt>
-                        <dd class="cart__amount"></dd>
-                    </div>
-                    <div class="cart__discount">
-                        <dt class="cart__label">상품 할인</dt>
-                        <dd class="cart__amount"></dd>
-                    </div>
-                    <div class="cart__delivery-fee">
-                        <dt class="cart__label">배송비</dt>
-                        <dd class="cart__amount"></dd>
-                    </div>
-                    <div class="cart__final-amount">
-                        <dt class="cart__label cart__label--bold">
-                            결제 예정 금액
-                        </dt>
-                        <dd class="cart__amount cart__amount--final"></dd>
-                    </div>
-                </dl>
+                <h3 class="sr-only">장바구니에 담은 결제 금액</h3>
+                <dl class="cart__payment-info"></dl>
             </section>
 
             <button
@@ -73,6 +54,6 @@
                 주문하기
             </button>
         </main>
-        <script type="module" src="../../services/cart/cart-index.js"></script>
+        <script type="module" src="../services/cart/cart-index.js"></script>
     </body>
 </html>
