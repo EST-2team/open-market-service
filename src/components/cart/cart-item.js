@@ -21,7 +21,7 @@ function renderCartItem(items) {
 
         tr.innerHTML = `<td class="cart__checkbox-cell">
                             <label class="sr-only" for="${checkboxId}">${item.product.name} 선택</label>
-                            <input id="${checkboxId}" type="checkbox" />
+                            <input id="${checkboxId}" data-item-id="${item.id}" class="cart__checkbox" type="checkbox" />
                         </td>
                         <td class="cart__product-cell">
                             <div class="cart__product-image-container">
