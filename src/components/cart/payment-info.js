@@ -1,5 +1,4 @@
 function renderPaymentInfo(items) {
-    console.log(items);
     const totalPrice = items.reduce(
         (acc, cur) => acc + cur.product.price * cur.quantity,
         0
@@ -17,7 +16,7 @@ function renderPaymentInfo(items) {
                     </div>
                     <div class="cart__discount">
                         <dt class="cart__label">상품 할인</dt>
-                        <dd class="cart__amount"><span>${discount}</span>원</dd>
+                        <dd class="cart__amount"><span>${discount.toLocaleString()}</span>원</dd>
                     </div>
                     <div class="cart__delivery-fee">
                         <dt class="cart__label">배송비</dt>
