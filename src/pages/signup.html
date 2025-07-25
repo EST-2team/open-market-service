@@ -17,7 +17,7 @@
                         <input
                             type="text"
                             id="username"
-                            name="userid"
+                            name="username"
                             required
                             class="signup-form__input signup-form__input--userid"
                             autocomplete="username"
@@ -95,6 +95,11 @@
                         class="signup-form__input signup-form__input--username"
                         autocomplete="name"
                     />
+                    <div
+                        id="name-msg"
+                        class="signup-form__msg"
+                        aria-live="polite"
+                    ></div>
                 </fieldset>
 
                 <fieldset
@@ -176,6 +181,11 @@
                         <a href="#">개인정보처리방침</a>에 대한 내용을
                         확인하였고 동의합니다.
                     </label>
+                    <div
+                        id="agree-msg"
+                        class="signup-form__msg"
+                        aria-live="polite"
+                    ></div>
                 </fieldset>
 
                 <button type="submit" class="signup-form__submit-button">
@@ -183,5 +193,6 @@
                 </button>
             </form>
         </main>
+        <script type="module" src="../services/signup/signup-index.js"></script>
     </body>
 </html>
