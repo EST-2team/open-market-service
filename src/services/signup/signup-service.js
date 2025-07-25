@@ -1,5 +1,28 @@
 import { validateUsername } from "./signup-validate-username-api.js";
 
+export function validateUsernameInput() {
+    const usernameInput = document.querySelector("#username");
+    const checkMsg = document.querySelector("#userid-check-msg");
+
+    const username = usernameInput.value.trim();
+    if (!username) {
+        checkMsg.textContent = "아이디를 입력하세요.";
+        checkMsg.style.color = "red";
+        return false;
+    }
+
+    const usernameRegex = /^[a-zA-Z0-9]{1,20}$/;
+    if (!usernameRegex.test(username)) {
+        checkMsg.textContent =
+            "ID는 20자 이내의 영어 소문자, 대문자, 숫자만 가능합니다.";
+        checkMsg.style.color = "red";
+        return false;
+    }
+
+    checkMsg.textContent = "";
+    return true;
+}
+
 // 아이디 중복확인
 export function duplicateUsername() {
     const usernameInput = document.querySelector("#username");
@@ -78,6 +101,11 @@ export function passwordMatch() {
     const passwordCheck = document.querySelector("#passwordCheck").value;
     const passwordCheckMsg = document.querySelector("#passwordCheck-msg");
 
+    if (!passwordCheck) {
+        passwordCheckMsg.textContent = "";
+        return false;
+    }
+
     if (password !== passwordCheck) {
         passwordCheckMsg.textContent = "비밀번호가 일치하지 않습니다.";
         passwordCheckMsg.style.color = "red";
@@ -140,10 +168,17 @@ export function agreeCheck() {
 // 폼 유효성 검사 통합
 export function setupFormValidation() {
     const signupForm = document.querySelector("#signup-form");
+    const usernameInput = document.querySelector("#username");
+    const passwordInput = document.querySelector("#password");
+
+    // 포커스 잃으면 검증 실행
+    usernameInput.addEventListener("blur", validateUsernameInput);
+    passwordInput.addEventListener("blur", validatePassword);
 
     signupForm.addEventListener("submit", (e) => {
         e.preventDefault();
 
+        const isValidateUsernameInput = validateUsernameInput();
         const isNameValid = validateName();
         const isPasswordValid = validatePassword();
         const isPasswordMatch = passwordMatch();
@@ -151,6 +186,7 @@ export function setupFormValidation() {
         const isAgreeChecked = agreeCheck();
 
         if (
+            isValidateUsernameInput &&
             isNameValid &&
             isPasswordValid &&
             isPasswordMatch &&
