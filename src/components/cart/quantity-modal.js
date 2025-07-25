@@ -1,6 +1,6 @@
 import { getCartData } from "../../services/cart/cart-api.js";
 
-function quantityModal(itemId) {
+function renderQuantityModal(itemId) {
     let cartData = getCartData();
     const item = cartData.find((item) => item.id === itemId);
 
@@ -19,4 +19,4 @@ function quantityModal(itemId) {
            `;
 }
 
-export { quantityModal };
+export { renderQuantityModal };
