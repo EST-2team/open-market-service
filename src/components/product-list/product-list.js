@@ -26,6 +26,10 @@ function renderProduct(products) {
         `;
 
         $productList.appendChild(li);
+
+        li.addEventListener("click", () => {
+            location.href = `./product-details.html?id=${product.id}`;
+        });
     });
 }
 
