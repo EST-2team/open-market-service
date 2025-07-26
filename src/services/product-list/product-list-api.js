@@ -3,7 +3,7 @@ import { renderProduct } from "../../components/product-list/product-list.js";
 let productData = [];
 
 const marketProductsUrl =
-    "https://api.wenivops.co.kr/services/open-market/products";
+    "https://api.wenivops.co.kr/services/open-market/products/";
 
 // 상품 데이터 모두 가져오기
 async function getProduct() {

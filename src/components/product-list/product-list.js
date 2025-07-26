@@ -1,6 +1,6 @@
 const $productList = document.querySelector(".product-list");
 
-async function renderProduct(products) {
+function renderProduct(products) {
     $productList.innerHTML = "";
     products.forEach((product) => {
         const li = document.createElement("li");
