@@ -8,7 +8,7 @@ export function isTokenExpired(token) {
 export async function getValidAccessToken() {
     const token = localStorage.getItem("accessToken");
 
-    if (!token || isTokenExpired(token)) {
+    if (isTokenExpired(token)) {
         const refresh = localStorage.getItem("refreshToken");
         const res = await fetch(
             "https://api.wenivops.co.kr/services/open-market/accounts/token/refresh/",
@@ -22,7 +22,7 @@ export async function getValidAccessToken() {
         if (!res.ok) {
             alert("세션이 만료되었습니다. 다시 로그인해주세요.");
             localStorage.clear();
-            location.href = "/login.html";
+            location.href = "../../pages/login/login.html";
             return null;
         }
 
