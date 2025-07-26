@@ -43,7 +43,7 @@ function renderCartItem(items) {
                         <td class="cart__product-quantity-cell">
                             <div class="cart__quantity-container">
                                 <button class="quantity-modal__btn cart__quantity--minus" data-item-id="${item.id}" type="button" aria-label="${item.product.name} 수량 감소 버튼"></button>
-                                <span class="cart__quantity" aria-label="현재 수량">${item.quantity}</span>
+                                <p class="cart__quantity" aria-label="현재 수량">${item.quantity}</p>
                                 <button class="quantity-modal__btn cart__quantity--plus" data-item-id="${item.id}" type="button" aria-label="${item.product.name} 수량 증가 버튼"></button>
                             </div>
                         </td>
@@ -56,8 +56,6 @@ function renderCartItem(items) {
 
                                 <button class="cart__payment-btn--single" data-item-id="${item.id}" type="button">주문하기</button>
                             </div>
-                        </td>
-                        <td class="cart__delete-cell">
                             <button class="cart__delete-btn" data-item-id="${item.id}" type="button" aria-label="상품 삭제"></button>
                         </td>
                         `;

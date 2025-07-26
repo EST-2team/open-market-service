@@ -12,21 +12,23 @@ function renderPaymentInfo(items) {
     const dl = document.querySelector(".cart__payment-info");
     dl.innerHTML = `<div class="cart__total-price">
                         <dt class="cart__label">총 상품금액</dt>
-                        <dd class="cart__amount">${totalPrice.toLocaleString()}원</dd>
+                        <dd class="cart__amount"><span>${totalPrice.toLocaleString()}</span> 원</dd>
                     </div>
+                    <div class="cart__symbol--minus"></div>
                     <div class="cart__discount">
                         <dt class="cart__label">상품 할인</dt>
-                        <dd class="cart__amount"><span>${discount.toLocaleString()}</span>원</dd>
+                        <dd class="cart__amount"><span>${discount.toLocaleString()}</span> 원</dd>
                     </div>
+                    <div class="cart__symbol--plus"></div>
                     <div class="cart__delivery-fee">
                         <dt class="cart__label">배송비</dt>
-                        <dd class="cart__amount"><span>${shippingFee.toLocaleString()}</span>원</dd>
+                        <dd class="cart__amount"><span>${shippingFee.toLocaleString()}</span> 원</dd>
                     </div>
                     <div class="cart__final-amount">
                         <dt class="cart__label cart__label--bold">
                             결제 예정 금액
                         </dt>
-                        <dd class="cart__amount cart__amount--final"><span>${(totalPrice - discount + shippingFee).toLocaleString()}</span>원</dd>
+                        <dd class="cart__amount cart__amount--final"><span>${(totalPrice - discount + shippingFee).toLocaleString()}</span> 원</dd>
                     </div>`;
 }
 
