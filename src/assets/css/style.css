@@ -454,5 +454,95 @@ a {
   display: block;
   margin: 40px auto 160px;
 }
+.cart__modal {
+  width: 360px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #c4c4c4;
+  background-color: #fff;
+}
+.cart__modal--close {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 18px 18px 0 0;
+}
+.cart__modal--cancel {
+  background: url("../../assets/icons/icon-delete.svg") no-repeat;
+  width: 22px;
+  height: 22px;
+}
+.cart__quantity-modal--control {
+  display: flex;
+}
+.cart__modal-quantity {
+  width: 50px;
+  height: 50px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  vertical-align: middle;
+  text-align: center;
+  border: 1px solid #c4c4c4;
+}
+.cart__modal-quantity::-webkit-outer-spin-button, .cart__modal-quantity::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.cart__modal-quantity--minus {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #c4c4c4;
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+  background: url("../../assets/icons/icon-minus-line.svg") no-repeat 50% 50%;
+}
+.cart__modal-quantity--plus {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #c4c4c4;
+  border-left: none;
+  border-radius: 0 5px 5px 0;
+  background: url("../../assets/icons/icon-plus-line.svg") no-repeat 50% 50%;
+}
+.cart__modal-quantity--cancel, .cart__modal-delete--cancel {
+  width: 100px;
+  height: 40px;
+  color: #767676;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+}
+.cart__modal-btn-group {
+  margin-top: 26px;
+  display: flex;
+  gap: 10px;
+}
+.cart__modal-quantity--update, .cart__modal-delete--update {
+  width: 100px;
+  height: 40px;
+  color: #fff;
+  background-color: #21bf48;
+  border-radius: 5px;
+}
+.cart__modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+.cart__modal-overlay.is-open {
+  display: flex;
+}
+.cart__delete-modal-text {
+  margin-top: 20px;
+}
 
 /*# sourceMappingURL=style.css.map */

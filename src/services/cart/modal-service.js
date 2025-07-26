@@ -39,8 +39,9 @@ function plusBtnDisabled(itemId, currentValue) {
     const item = cartData.find((item) => item.id === itemId);
 
     if (item.product.stock <= currentValue) {
-        const plus = document.querySelector(".cart__modal-quantity--plus");
-        plus.disabled = true;
+        const $plus = document.querySelector(".cart__modal-quantity--plus");
+        $plus.disabled = true;
+        $plus.style.cursor = "not-allowed";
         return;
     }
 }
@@ -72,6 +73,9 @@ async function quantityUpdate(itemId) {
 function closeModal() {
     const $cartModal = document.querySelector(".cart__modal");
     $cartModal.innerHTML = "";
+
+    const $overlay = document.querySelector(".cart__modal-overlay");
+    $overlay.classList.remove("is-open");
 }
 
 function deleteCartItemService(itemId) {
@@ -101,19 +105,23 @@ async function refreshRenderView() {
 
 function initCartModalListener() {
     const $cartTableSection = document.querySelector(".cart__table-section");
+    const $modalOverlay = document.querySelector(".cart__modal-overlay");
     if (!$cartTableSection) {
         console.error("cart__table-section 요소를 찾을 수 없습니다.");
         return;
     }
 
+    //모달 열리는 트리거
     $cartTableSection.addEventListener("click", async (e) => {
         const itemId = parseInt(e.target.getAttribute("data-item-id"));
 
         // 수량 모달 버튼 클릭 (장바구니 목록에서)
         if (e.target.classList.contains("quantity-modal__btn")) {
             const $cartModal = document.querySelector(".cart__modal");
-            $cartModal.innerHTML = "";
             $cartModal.innerHTML = renderQuantityModal(itemId);
+
+            const $overlay = document.querySelector(".cart__modal-overlay");
+            $overlay.classList.add("is-open");
 
             const $quantityInput = document.querySelector(
                 ".cart__modal-quantity"
@@ -121,8 +129,21 @@ function initCartModalListener() {
             const currentValue = parseInt($quantityInput.value) || 0;
             plusBtnDisabled(itemId, currentValue);
         }
+        // 삭제 버튼
+        else if (e.target.classList.contains("cart__delete-btn")) {
+            deleteCartItemService(itemId);
+
+            const $overlay = document.querySelector(".cart__modal-overlay");
+            $overlay.classList.add("is-open");
+        }
+    });
+
+    //모달 내부 컨트롤
+    $modalOverlay.addEventListener("click", async (e) => {
+        const itemId = parseInt(e.target.getAttribute("data-item-id"));
+
         // 모달 내부 감소 버튼
-        else if (e.target.classList.contains("cart__modal-quantity--minus")) {
+        if (e.target.classList.contains("cart__modal-quantity--minus")) {
             decreaseQuantity();
         }
         // 모달 내부 증가 버튼
@@ -146,10 +167,6 @@ function initCartModalListener() {
             e.target.classList.contains("cart__modal-delete--cancel")
         ) {
             closeModal();
-        }
-        // 삭제 버튼
-        else if (e.target.classList.contains("cart__delete-btn")) {
-            deleteCartItemService(itemId);
         }
         // 삭제 확인
         else if (e.target.classList.contains("cart__modal-delete--update")) {
