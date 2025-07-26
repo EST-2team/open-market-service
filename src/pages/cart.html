@@ -19,7 +19,7 @@
 
                     <thead class="cart__header">
                         <tr>
-                            <th class="cart__checkbox-col">
+                            <th class="cart__checkbox-col" scope="col">
                                 <label class="sr-only" for="checkAll"
                                     >전체 선택</label
                                 >
@@ -29,10 +29,14 @@
                                     type="checkbox"
                                 />
                             </th>
-                            <th class="cart__product-col">상품정보</th>
-                            <th class="cart__quantity-col">수량</th>
-                            <th class="cart__payment-col">상품금액</th>
-                            <th class="cart__delete-col">
+                            <th class="cart__product-col" scope="col">
+                                상품정보
+                            </th>
+                            <th class="cart__quantity-col" scope="col">수량</th>
+                            <th class="cart__payment-col" scope="col">
+                                상품금액
+                            </th>
+                            <th class="cart__delete-col" scope="col">
                                 <span class="sr-only">삭제</span>
                             </th>
                         </tr>

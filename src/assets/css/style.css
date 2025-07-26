@@ -1,4 +1,29 @@
 @charset "UTF-8";
+@font-face {
+  font-family: "Spoqa Han Sans Neo";
+  font-weight: 700;
+  src: url("../../assets/fonts/SpoqaHanSansNeo/SpoqaHanSansNeo-Bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Spoqa Han Sans Neo";
+  font-weight: 500;
+  src: url("../../assets/fonts/SpoqaHanSansNeo/SpoqaHanSansNeo-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Spoqa Han Sans Neo";
+  font-weight: 400;
+  src: url("../../assets/fonts/SpoqaHanSansNeo/SpoqaHanSansNeo-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Spoqa Han Sans Neo";
+  font-weight: 300;
+  src: url("../../assets/fonts/SpoqaHanSansNeo/SpoqaHanSansNeo-Light.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Spoqa Han Sans Neo";
+  font-weight: 100;
+  src: url("../../assets/fonts/SpoqaHanSansNeo/SpoqaHanSansNeo-Thin.woff2") format("woff2");
+}
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -182,11 +207,73 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: "Spoqa Han Sans Neo", sans-serif;
 }
 .cart__title {
   margin-top: 54px;
   font-size: 36px;
   font-weight: 700;
+  line-height: 44px;
+}
+.cart__table {
+  width: 1280px;
+  border-collapse: separate;
+}
+.cart__table-section {
+  margin-top: 52px;
+}
+.cart__header {
+  width: 1280px;
+  height: 60px;
+  background: #f2f2f2;
+  font-size: 18px;
+  font-weight: 400;
+}
+.cart__header th {
+  vertical-align: middle;
+}
+.cart__header th:first-child {
+  border-radius: 10px 0 0 10px;
+  text-align: right;
+}
+.cart__header th:nth-last-child(2) {
+  border-radius: 0 10px 10px 0;
+}
+.cart input[type=checkbox] {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #21bf48;
+  border-radius: 50%;
+  appearance: none;
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+}
+.cart input[type=checkbox]:checked {
+  background-color: #fff;
+}
+.cart input[type=checkbox]:checked::before {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: #21bf48;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+.cart__item td {
+  border-top: #e0e0e0 2px solid;
+  border-bottom: #e0e0e0 2px solid;
+}
+.cart__checkbox-cell {
+  text-align: right;
+  border-left: #e0e0e0 2px solid;
+  border-radius: 10px 0 0 10px;
+}
+.cart__payment-col {
+  border-right: #e0e0e0 2px solid;
 }
 
 /*# sourceMappingURL=style.css.map */
