@@ -1,6 +1,6 @@
 const $productList = document.querySelector(".product-list");
 
-function renderProduct(products) {
+async function renderProduct(products) {
     $productList.innerHTML = "";
     products.forEach((product) => {
         const li = document.createElement("li");
@@ -26,6 +26,10 @@ function renderProduct(products) {
         `;
 
         $productList.appendChild(li);
+
+        li.addEventListener("click", () => {
+            location.href = `./product-details.html?id=${product.id}`;
+        });
     });
 }
 
