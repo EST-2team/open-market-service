@@ -1,0 +1,155 @@
+import { fetchProductById } from "../services/product-list/product-list-api.js";
+
+const $productImg = document.querySelector(".product-details__img");
+const $productInfo = document.querySelector(".product-details__constents-info");
+const $productTotal = document.querySelector(".product-total");
+
+const urlParams = new URLSearchParams(window.location.search);
+const productId = urlParams.get("id");
+
+let currentProduct = null;
+let productQuantity = 1;
+
+// url id 값으로 해당 데이터 가져오기
+async function loadProductDetail() {
+    const product = await fetchProductById(productId);
+    if (product) {
+        currentProduct = product;
+        renderProductDetail(product);
+        setEventListener();
+    } else {
+        alert("상품 정보를 불러올 수 없습니다.");
+    }
+}
+
+loadProductDetail();
+
+// 해당 상품 정보 렌더 함수
+function renderProductDetail(product) {
+    if (product) {
+        $productImg.innerHTML = `
+            <img src="${product.image}" alt="${product.info}">
+        `;
+
+        $productInfo.innerHTML = `
+        <p class="product-details__seller" aria-label="판매점">
+            ${product.seller.store_name}
+        </p>
+        <h3 class="product-details__info" aria-label="제품명">
+            ${product.info}
+        </h3>
+        <p class="product-details__price" aria-label="가격">
+            <span id="total-amount">${product.price.toLocaleString()}</span>원
+        </p>
+        <p class="delivery-options">${product.shipping_method === "PARCEL" ? "택배배송" : "직접배송"} / 무료배송</p>
+        <hr />
+        <div class="product-quantity">
+            <button class="product-quantity__minus" type="button" aria-label="${product.info} 수량 감소 버튼"></button>
+            <p class="product-quantity__total" aria-label="현재 수량">${productQuantity}</p>
+            <button class="product-quantity__plus" type="button" aria-label="${product.info} 수량 증가 버튼"></button>
+        </div>
+        <hr />
+        `;
+
+        $productTotal.innerHTML = `
+            <p id="total__text--strong">총 상품 금액</p>
+            <p id="total__result">
+                총 수량 <span class="total__quantity green">${productQuantity}</span>개 <span id="total-div">|</span> <span class="total__amount--strong green">${(product.price * productQuantity).toLocaleString()}</span><span class="total__won green">원</span>
+            </p>
+        `;
+
+        if (product.stock === 0) {
+            plusBtnDisabled();
+            soldOut();
+        }
+    } else {
+        console.log("상품 상세 정보 불러오기 실패", error.message);
+        alert("상품 상세 정보를 불러오지 못했습니다.");
+    }
+}
+
+// 수량 버튼 클릭 이벤트 함수
+function setEventListener() {
+    const $minusBtn = document.querySelector(".product-quantity__minus");
+    const $plusBtn = document.querySelector(".product-quantity__plus");
+
+    if ($minusBtn) {
+        $minusBtn.addEventListener("click", decreaseQuantity);
+    }
+
+    if ($plusBtn) {
+        $plusBtn.addEventListener("click", increaseQuantity);
+    }
+}
+
+// 수량 감소 함수
+function decreaseQuantity() {
+    if (productQuantity > 1) {
+        productQuantity--;
+        updateQuantity();
+    }
+}
+
+// 수량 증가 함수
+function increaseQuantity() {
+    if (productQuantity < currentProduct.stock) {
+        productQuantity++;
+        updateQuantity();
+
+        if (productQuantity >= currentProduct.stock) {
+            plusBtnDisabled();
+        }
+    }
+}
+
+// 수량 증가 버튼 비활성화 함수
+function plusBtnDisabled() {
+    const $plusBtn = document.querySelector(".product-quantity__plus");
+    $plusBtn.setAttribute("disabled", true);
+    $plusBtn.style.cursor = "not-allowed";
+}
+
+// 수량 표시 업데이트 함수
+function updateQuantity() {
+    const $quantity = document.querySelector(".product-quantity__total");
+    const $totalQuantity = document.querySelector(".total__quantity");
+    const $totalAmount = document.querySelector(".total__amount--strong");
+
+    if ($quantity && $totalQuantity && $totalAmount && currentProduct) {
+        $quantity.textContent = productQuantity;
+        $totalQuantity.textContent = productQuantity;
+        $totalAmount.textContent = (
+            currentProduct.price * productQuantity
+        ).toLocaleString();
+    }
+}
+
+// 재고 없을 시 품절 표시 함수
+function soldOut() {
+    const $buyOrCart = document.querySelector(".buy-or-cart");
+    const $soldOut = document.querySelector(".sold-out");
+    $buyOrCart.style.display = "none";
+    $soldOut.style.display = "block";
+}
+
+// 장바구니에 해당 상품 정보 넘겨주기
+// function AddProduct() {
+//     const $cartBtn = document.querySelector(".cart-btn");
+//     $cartBtn.addEventListener(
+//         "click",
+//         addCartItems(currentProduct.id, productQuantity)
+//     );
+// }
+
+// 이미 장바구니에 담긴 상품을 다시 담으려고 할 때 모달 띄우는 함수
+// function notAddProductModal() {
+//     const $buyBtn = document.querySelector(".buy-btn");
+//     const $cartBtn = document.querySelector(".cart-btn");
+// }
+
+// function isCartItems() {
+
+//     addCartItems(productId, productQuantity);
+// }
+
+export { productId };
