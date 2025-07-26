@@ -4,7 +4,7 @@ let cartData = [];
 
 async function fetchCartList() {
     try {
-        const accessToken = localStorage.getItem("access");
+        const accessToken = localStorage.getItem("accessToken");
 
         const url = "https://api.wenivops.co.kr/services/open-market/cart/";
         const options = {
@@ -32,7 +32,7 @@ async function fetchCartList() {
 
 async function deleteCartItem(itemId) {
     try {
-        const accessToken = localStorage.getItem("access");
+        const accessToken = localStorage.getItem("accessToken");
 
         const url = `https://api.wenivops.co.kr/services/open-market/cart/${itemId}/`;
         const options = {
@@ -57,7 +57,7 @@ async function deleteCartItem(itemId) {
 
 async function updateCartItemQuantity(item) {
     try {
-        const accessToken = localStorage.getItem("access");
+        const accessToken = localStorage.getItem("accessToken");
 
         const url = `https://api.wenivops.co.kr/services/open-market/cart/${item.id}/`;
         const options = {
