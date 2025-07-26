@@ -82,9 +82,9 @@ function deleteCartItemService(itemId) {
 async function refreshRenderView() {
     const checkedItemIds = checkedIds();
 
-    await fetchCartList();
+    const cartData = await fetchCartList();
+    renderCartItem(cartData);
 
-    const cartData = getCartData();
     const checkedItems = cartData.filter((item) =>
         checkedItemIds.includes(item.id)
     );

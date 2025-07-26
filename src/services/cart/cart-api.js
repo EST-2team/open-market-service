@@ -1,5 +1,3 @@
-import { renderCartItem } from "../../components/cart/cart-item.js";
-
 let cartData = [];
 
 async function fetchCartList() {
@@ -23,7 +21,7 @@ async function fetchCartList() {
         const data = await res.json();
         cartData = data.results;
 
-        renderCartItem(cartData);
+        return cartData;
     } catch (error) {
         console.error(error);
         alert(error);
