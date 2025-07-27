@@ -23,6 +23,7 @@ function decreaseQuantity() {
 
     if (plus.disabled) {
         plus.disabled = false;
+        plus.style.cursor = "pointer";
         return;
     }
 }
