@@ -48,7 +48,7 @@
             </section>
             <section class="order__delivery-info">
                 <h3>배송지 정보</h3>
-                <form action="">
+                <form>
                     <fieldset>
                         <legend>주문자 정보</legend>
 
@@ -139,7 +139,7 @@
                             >
                                 <label for="zipcode">우편번호</label>
                                 <input id="zipcode" type="text" />
-                                <button>우변펀호 조회</button>
+                                <button type="button">우변펀호 조회</button>
 
                                 <label for="address">주소</label>
                                 <input id="address" type="text" />
@@ -152,39 +152,56 @@
                             <input id="delivery-msg" type="text" />
                         </div>
                     </fieldset>
-                    <fieldset>
-                        <legend>결제수단</legend>
-                        <label for="card">신용/체크카드</label>
-                        <input
-                            id="card"
-                            name="order__payment-method"
-                            type="radio"
-                        />
-                        <label for="deposit">무통장 입금</label>
-                        <input
-                            id="deposit"
-                            name="order__payment-method"
-                            type="radio"
-                        />
-                        <label for="mobile-payment">휴대폰 결제</label>
-                        <input
-                            id="mobile-payment"
-                            name="order__payment-method"
-                            type="radio"
-                        />
-                        <label for="naver-pay">네이버페이</label>
-                        <input
-                            id="naver-pay"
-                            name="order__payment-method"
-                            type="radio"
-                        />
-                        <label for="kakao-pay">카카오페이</label>
-                        <input
-                            id="kakao-pay"
-                            name="order__payment-method"
-                            type="radio"
-                        />
-                    </fieldset>
+                    <div>
+                        <fieldset>
+                            <legend>결제수단</legend>
+                            <label for="card">신용/체크카드</label>
+                            <input
+                                id="card"
+                                name="order__payment-method"
+                                type="radio"
+                            />
+                            <label for="deposit">무통장 입금</label>
+                            <input
+                                id="deposit"
+                                name="order__payment-method"
+                                type="radio"
+                            />
+                            <label for="mobile-payment">휴대폰 결제</label>
+                            <input
+                                id="mobile-payment"
+                                name="order__payment-method"
+                                type="radio"
+                            />
+                            <label for="naver-pay">네이버페이</label>
+                            <input
+                                id="naver-pay"
+                                name="order__payment-method"
+                                type="radio"
+                            />
+                            <label for="kakao-pay">카카오페이</label>
+                            <input
+                                id="kakao-pay"
+                                name="order__payment-method"
+                                type="radio"
+                            />
+                        </fieldset>
+                        <div class="final-payment-info">
+                            <dt>상품금액</dt>
+                            <dd><span>46,500</span>원</dd>
+                            <dt>할인금액</dt>
+                            <dd><span>0</span>원</dd>
+                            <dt>배송비</dt>
+                            <dd><span>0</span>원</dd>
+                            <dt>결제금액</dt>
+                            <dd><span>46,500</span>원</dd>
+                            <label class="sr-only" for="agree"
+                                >정보 제공 동의</label
+                            >
+                            <input id="agree" type="checkbox" />
+                            <button type="submit">결제하기</button>
+                        </div>
+                    </div>
                 </form>
             </section>
         </main>
