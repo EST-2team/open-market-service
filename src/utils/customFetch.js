@@ -7,8 +7,7 @@ export async function customFetch(url, options, retryCount = 0) {
         if (
             options.headers?.Authorization &&
             res.status === 401 &&
-            retryCount < 1 &&
-            retryCount < 3
+            retryCount < 1
         ) {
             const token = await getValidAccessToken();
             if (token) {
