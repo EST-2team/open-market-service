@@ -3,7 +3,190 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../assets/css/style.css" />
         <title>주문/결제하기 - HODU</title>
     </head>
-    <body></body>
+    <body>
+        <main class="order">
+            <h2 class="order__title">주문/결제하기</h2>
+
+            <section class="order__table-section">
+                <h3 class="sr-only">결제 예정 상품 목록</h3>
+                <table class="order__table">
+                    <thead class="order__header">
+                        <tr>
+                            <th scope="col">상품정보</th>
+                            <th scope="col">할인</th>
+                            <th scope="col">배송비</th>
+                            <th scope="col">주문금액</th>
+                        </tr>
+                    </thead>
+                    <tbody class="order__list">
+                        <tr>
+                            <td>
+                                <img src="#" alt="" />
+                                <p>딥러닝 개발자 무릎 담요</p>
+                                <h4>백엔드 글로벌</h4>
+                                <p>수량: 1개</p>
+                            </td>
+                            <td>
+                                <span aria-hidden="true">-</span>
+                            </td>
+                            <td><span>무료배송</span></td>
+                            <td>17,500원</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th class="sr-only" scope="row">합계</th>
+                            <td colspan="4">
+                                총 주문금액 <span>46,500원</span>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </section>
+            <section class="order__delivery-info">
+                <h3>배송지 정보</h3>
+                <form action="">
+                    <fieldset>
+                        <legend>주문자 정보</legend>
+
+                        <div>
+                            <label for="name">이름</label>
+                            <input
+                                id="name"
+                                class="order__user-name"
+                                type="text"
+                            />
+                        </div>
+                        <div>
+                            <span id="user-phone-label">휴대폰</span>
+                            <div
+                                role="group"
+                                aria-labelledby="user-phone-label"
+                            >
+                                <label class="sr-only" for="order__user-mobile1"
+                                    >앞자리</label
+                                >
+                                <input id="order__user-mobile1" type="tel" />
+                                <span aria-hidden="true">-</span>
+                                <label class="sr-only" for="order__user-mobile2"
+                                    >중간자리</label
+                                >
+                                <input id="order__user-mobile2" type="tel" />
+                                <span aria-hidden="true">-</span>
+                                <label class="sr-only" for="order__user-mobile3"
+                                    >끝자리</label
+                                >
+                                <input id="order__user-mobile3" type="tel" />
+                            </div>
+                        </div>
+                        <div>
+                            <label for="email">이메일</label>
+                            <input id="email" type="email" />
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="order__delivery-info">
+                        <legend>배송지 정보</legend>
+                        <div>
+                            <label for="recipient-name">수령인</label>
+                            <input id="recipient-name" type="text" />
+                        </div>
+                        <div>
+                            <span id="recipient-phone-label">휴대폰</span>
+                            <div
+                                role="group"
+                                aria-labelledby="recipient-phone-label"
+                            >
+                                <label
+                                    class="sr-only"
+                                    for="order__recipient-mobile1"
+                                    >앞자리</label
+                                >
+                                <input
+                                    id="order__recipient-mobile1"
+                                    type="tel"
+                                />
+                                <span aria-hidden="true">-</span>
+                                <label
+                                    class="sr-only"
+                                    for="order__recipient-mobile2"
+                                    >중간자리</label
+                                >
+                                <input
+                                    id="order__recipient-mobile2"
+                                    type="tel"
+                                />
+                                <span aria-hidden="true">-</span>
+                                <label
+                                    class="sr-only"
+                                    for="order__recipient-mobile3"
+                                    >끝자리</label
+                                >
+                                <input
+                                    id="order__recipient-mobile3"
+                                    type="tel"
+                                />
+                            </div>
+                        </div>
+                        <div>
+                            <span id="recipient-address">배송지 정보</span>
+                            <div
+                                role="group"
+                                aria-labelledby="recipient-address"
+                            >
+                                <label for="zipcode">우편번호</label>
+                                <input id="zipcode" type="text" />
+                                <button>우변펀호 조회</button>
+
+                                <label for="address">주소</label>
+                                <input id="address" type="text" />
+                                <label for="address-detail">주소</label>
+                                <input id="address-detail" type="text" />
+                            </div>
+                        </div>
+                        <div>
+                            <label for="delivery-msg">배송 메시지</label>
+                            <input id="delivery-msg" type="text" />
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>결제수단</legend>
+                        <label for="card">신용/체크카드</label>
+                        <input
+                            id="card"
+                            name="order__payment-method"
+                            type="radio"
+                        />
+                        <label for="deposit">무통장 입금</label>
+                        <input
+                            id="deposit"
+                            name="order__payment-method"
+                            type="radio"
+                        />
+                        <label for="mobile-payment">휴대폰 결제</label>
+                        <input
+                            id="mobile-payment"
+                            name="order__payment-method"
+                            type="radio"
+                        />
+                        <label for="naver-pay">네이버페이</label>
+                        <input
+                            id="naver-pay"
+                            name="order__payment-method"
+                            type="radio"
+                        />
+                        <label for="kakao-pay">카카오페이</label>
+                        <input
+                            id="kakao-pay"
+                            name="order__payment-method"
+                            type="radio"
+                        />
+                    </fieldset>
+                </form>
+            </section>
+        </main>
+    </body>
 </html>
