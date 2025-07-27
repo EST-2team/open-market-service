@@ -1,9 +1,35 @@
 let cartData = [];
 
-async function fetchCartList() {
+async function addCartItems(productId, productQuantity) {
     try {
         const accessToken = localStorage.getItem("accessToken");
 
+        const url = `https://api.wenivops.co.kr/services/open-market/cart/`;
+        const options = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${accessToken}`,
+            },
+            body: JSON.stringify({
+                product_id: parseInt(productId, 10),
+                quantity: parseInt(productQuantity, 10),
+            }),
+        };
+        const res = await fetch(url, options);
+
+        if (!res.ok) {
+            throw new Error("장바구니에 상품을 추가 중 오류가 발생하였습니다.");
+        }
+    } catch (error) {
+        console.error(error);
+        alert(error);
+    }
+}
+
+async function fetchCartList() {
+    try {
+        const accessToken = localStorage.getItem("accessToken");
         const url = "https://api.wenivops.co.kr/services/open-market/cart/";
         const options = {
             method: "GET",
@@ -25,6 +51,7 @@ async function fetchCartList() {
     } catch (error) {
         console.error(error);
         alert(error);
+        return null;
     }
 }
 
@@ -83,4 +110,10 @@ async function updateCartItemQuantity(item) {
 
 const getCartData = () => cartData;
 
-export { fetchCartList, getCartData, deleteCartItem, updateCartItemQuantity };
+export {
+    addCartItems,
+    fetchCartList,
+    getCartData,
+    deleteCartItem,
+    updateCartItemQuantity,
+};
