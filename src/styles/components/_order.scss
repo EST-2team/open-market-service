@@ -1,0 +1,265 @@
+.order {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+
+    font-family: "Spoqa Han Sans Neo", sans-serif;
+
+    &__title {
+        margin-top: 54px;
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 44px;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    &__table-section {
+        margin-top: 52px;
+    }
+    &__table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 24px;
+    }
+
+    &__header {
+        height: 60px;
+        background-color: #f2f2f2;
+
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 100%;
+    }
+    &__header th {
+        vertical-align: middle;
+    }
+    &__header th:first-child {
+        border-radius: 10px 0 0 10px;
+    }
+    &__header th:last-child {
+        border-radius: 0 10px 10px 0;
+    }
+
+    &__product-info &__product-img {
+        width: 104px;
+        border-radius: 10px;
+        float: left;
+        margin-right: 36px;
+    }
+    &__product-seller {
+        margin-top: 20px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 100%;
+        vertical-align: middle;
+        color: #767676;
+    }
+    &__product-name {
+        margin-top: 6px;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+        vertical-align: middle;
+    }
+    &__product-quantity {
+        margin-top: 10px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 100%;
+        vertical-align: middle;
+        color: #767676;
+    }
+    &__product-discount {
+        color: #767676;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 100%;
+        text-align: center;
+        vertical-align: middle;
+    }
+    &__product-fee {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 100%;
+        text-align: center;
+        vertical-align: middle;
+        color: #767676;
+    }
+    &__product-price {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 100%;
+        text-align: center;
+        vertical-align: middle;
+    }
+    & tfoot {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 100%;
+        text-align: right;
+        vertical-align: middle;
+    }
+    & tfoot span {
+        margin-left: 10px;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 100%;
+        text-align: right;
+        vertical-align: middle;
+        color: #eb5757;
+    }
+    &__delivery-info {
+        margin-top: 98px;
+    }
+    &__delivery-info h3 {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 100%;
+        vertical-align: middle;
+        margin-bottom: 18px;
+    }
+
+    &__delivery-info .line {
+        width: 100%;
+        height: 1px;
+        background-color: #c4c4c4;
+    }
+    &__delivery-info .line.md {
+        height: 2px;
+    }
+    &__delivery-info legend {
+        padding: 40px 0 8px;
+
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 100%;
+        vertical-align: middle;
+    }
+    &__delivery-info label {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 100%;
+        vertical-align: middle;
+    }
+    .user-name {
+        margin-right: 140px;
+    }
+    &__user-name {
+        width: 334px;
+        height: 40px;
+        border: 1px solid #c4c4c4;
+        margin: 8px 0;
+    }
+    &__mobile-section {
+        display: flex;
+        gap: 130px;
+        align-items: center;
+    }
+    &__mobile-section input {
+        width: 80px;
+        height: 40px;
+        border: 1px solid #c4c4c4;
+        margin: 8px 0;
+    }
+    .dash {
+        margin: 0 5px;
+    }
+    .user-email {
+        margin-right: 125px;
+    }
+    #email {
+        width: 334px;
+        height: 40px;
+        border: 1px solid #c4c4c4;
+        margin: 8px 0;
+    }
+
+    .recipient__delivery-info legend {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 100%;
+        vertical-align: middle;
+    }
+    .recipient-name-label {
+        margin-right: 126px;
+    }
+    #recipient-name {
+        width: 334px;
+        height: 40px;
+        border: 1px solid #c4c4c4;
+        margin: 8px 0;
+    }
+    .recipient-mobile-section {
+        display: flex;
+        align-items: center;
+    }
+    #recipient-phone-label {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 100%;
+        vertical-align: middle;
+        margin-right: 130px;
+    }
+    .recipient-mobile-section input {
+        width: 80px;
+        height: 40px;
+        border: 1px solid #c4c4c4;
+        margin: 8px 0;
+    }
+    .recipient-address-wrapper {
+        display: flex;
+        gap: 97px;
+    }
+    #recipient-address {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 100%;
+        vertical-align: middle;
+        margin-top: 18px;
+    }
+    .recipient-address-info {
+        margin: 8px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    .recipient-address-info #zipcode {
+        width: 170px;
+        height: 40px;
+        border: 1px solid #c4c4c4;
+    }
+    .recipient-address-info #address,
+    #address-detail {
+        width: 800px;
+        height: 40px;
+        border: 1px solid #c4c4c4;
+    }
+    .address-search-btn {
+        width: 154px;
+        height: 40px;
+        border-radius: 5px;
+        background-color: #21bf48;
+
+        color: #fff;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 100%;
+        text-align: center;
+        vertical-align: middle;
+    }
+    .delivery-msg-label {
+        margin-right: 93px;
+
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 100%;
+        vertical-align: middle;
+    }
+    #delivery-msg {
+        width: 800px;
+        height: 40px;
+        border: 1px solid #c4c4c4;
+        margin: 8px 0;
+    }
+}

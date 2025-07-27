@@ -23,23 +23,33 @@
                     </thead>
                     <tbody class="order__list">
                         <tr>
-                            <td>
-                                <img src="#" alt="" />
-                                <p>딥러닝 개발자 무릎 담요</p>
-                                <h4>백엔드 글로벌</h4>
-                                <p>수량: 1개</p>
+                            <td class="order__product-info">
+                                <img
+                                    class="order__product-img"
+                                    src="./test.png"
+                                    alt=""
+                                />
+                                <h4 class="order__product-seller">
+                                    백엔드 글로벌
+                                </h4>
+                                <p class="order__product-name">
+                                    딥러닝 개발자 무릎 담요
+                                </p>
+                                <p class="order__product-quantity">수량: 1개</p>
                             </td>
-                            <td>
+                            <td class="order__product-discount">
                                 <span aria-hidden="true">-</span>
                             </td>
-                            <td><span>무료배송</span></td>
-                            <td>17,500원</td>
+                            <td class="order__product-fee">
+                                <span>무료배송</span>
+                            </td>
+                            <td class="order__product-price">17,500원</td>
                         </tr>
                     </tbody>
                     <tfoot>
                         <tr>
                             <th class="sr-only" scope="row">합계</th>
-                            <td colspan="4">
+                            <td colspan="3">
                                 총 주문금액 <span>46,500원</span>
                             </td>
                         </tr>
@@ -47,20 +57,23 @@
                 </table>
             </section>
             <section class="order__delivery-info">
-                <h3>배송지 정보</h3>
+                <h3>배송정보</h3>
+                <div class="line md"></div>
                 <form>
                     <fieldset>
                         <legend>주문자 정보</legend>
+                        <div class="line md"></div>
 
                         <div>
-                            <label for="name">이름</label>
+                            <label class="user-name" for="name">이름</label>
                             <input
                                 id="name"
                                 class="order__user-name"
                                 type="text"
                             />
                         </div>
-                        <div>
+                        <div class="line"></div>
+                        <div class="order__mobile-section">
                             <span id="user-phone-label">휴대폰</span>
                             <div
                                 role="group"
@@ -70,31 +83,39 @@
                                     >앞자리</label
                                 >
                                 <input id="order__user-mobile1" type="tel" />
-                                <span aria-hidden="true">-</span>
+                                <span class="dash" aria-hidden="true">-</span>
                                 <label class="sr-only" for="order__user-mobile2"
                                     >중간자리</label
                                 >
                                 <input id="order__user-mobile2" type="tel" />
-                                <span aria-hidden="true">-</span>
+                                <span class="dash" aria-hidden="true">-</span>
                                 <label class="sr-only" for="order__user-mobile3"
                                     >끝자리</label
                                 >
                                 <input id="order__user-mobile3" type="tel" />
                             </div>
                         </div>
+                        <div class="line"></div>
                         <div>
-                            <label for="email">이메일</label>
+                            <label class="user-email" for="email">이메일</label>
                             <input id="email" type="email" />
                         </div>
+                        <div class="line"></div>
                     </fieldset>
 
-                    <fieldset class="order__delivery-info">
+                    <fieldset class="recipient__delivery-info">
                         <legend>배송지 정보</legend>
+                        <div class="line md"></div>
                         <div>
-                            <label for="recipient-name">수령인</label>
+                            <label
+                                class="recipient-name-label"
+                                for="recipient-name"
+                                >수령인</label
+                            >
                             <input id="recipient-name" type="text" />
                         </div>
-                        <div>
+                        <div class="line"></div>
+                        <div class="recipient-mobile-section">
                             <span id="recipient-phone-label">휴대폰</span>
                             <div
                                 role="group"
@@ -131,26 +152,45 @@
                                 />
                             </div>
                         </div>
-                        <div>
-                            <span id="recipient-address">배송지 정보</span>
+                        <div class="line"></div>
+                        <div class="recipient-address-wrapper">
+                            <span id="recipient-address">배송지 주소</span>
                             <div
+                                class="recipient-address-info"
                                 role="group"
                                 aria-labelledby="recipient-address"
                             >
-                                <label for="zipcode">우편번호</label>
-                                <input id="zipcode" type="text" />
-                                <button type="button">우변펀호 조회</button>
+                                <div>
+                                    <label class="sr-only" for="zipcode"
+                                        >우편번호</label
+                                    >
+                                    <input id="zipcode" type="text" />
+                                    <button
+                                        class="address-search-btn"
+                                        type="button"
+                                    >
+                                        우변펀호 조회
+                                    </button>
+                                </div>
 
-                                <label for="address">주소</label>
+                                <label class="sr-only" for="address"
+                                    >주소</label
+                                >
                                 <input id="address" type="text" />
-                                <label for="address-detail">주소</label>
+                                <label class="sr-only" for="address-detail"
+                                    >상세주소</label
+                                >
                                 <input id="address-detail" type="text" />
                             </div>
                         </div>
+                        <div class="line"></div>
                         <div>
-                            <label for="delivery-msg">배송 메시지</label>
+                            <label class="delivery-msg-label" for="delivery-msg"
+                                >배송 메시지</label
+                            >
                             <input id="delivery-msg" type="text" />
                         </div>
+                        <div class="line"></div>
                     </fieldset>
                     <div>
                         <fieldset>
