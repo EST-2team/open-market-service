@@ -12,7 +12,6 @@ export async function customFetch(url, options, retryCount = 0) {
         ) {
             const token = await getValidAccessToken();
             if (token) {
-                console.log(2);
                 const newOptions = {
                     ...options,
                     headers: {
@@ -25,7 +24,7 @@ export async function customFetch(url, options, retryCount = 0) {
         }
         return res;
     } catch (error) {
-        console.log(error);
+        console.error(error);
         throw new Error("API 통신 중 오류 발생");
     }
 }
