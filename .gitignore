@@ -43,3 +43,5 @@ logs
 # 임시 파일들
 .tmp
 .temp
+
+/src/assets/css/style.css
