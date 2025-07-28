@@ -6,7 +6,9 @@
         <title>상품 목록 페이지</title>
     </head>
     <body>
-        <!-- <header></header> -->
+        <header>
+            <nav class="nav-placeholder"></nav>
+        </header>
         <main>
             <section class="banner">
                 <h2 class="sr-only">상품에 대한 이벤트 배너</h2>
@@ -66,10 +68,12 @@
                 <ul class="product-list"></ul>
             </section>
         </main>
+        <script src="../services/nav/nav-loader.js" defer></script>
         <!-- <script src="../components/project-list/product-banner.js"></script> -->
         <script
             type="module"
             src="../services/product-list/product-list-index.js"
         ></script>
+        <script src="../services/nav/search.js"></script>
     </body>
 </html>
