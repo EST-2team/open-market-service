@@ -15,20 +15,8 @@
                     <div class="product-details__constents-info"></div>
                     <div class="product-total"></div>
                     <div class="buy-or-cart">
-                        <button
-                            class="buy-btn"
-                            type="button"
-                            onclick="isCartItems()"
-                        >
-                            바로 구매
-                        </button>
-                        <button
-                            class="cart-btn"
-                            type="button"
-                            onclick="isCartItems()"
-                        >
-                            장바구니
-                        </button>
+                        <button class="buy-btn" type="button">바로 구매</button>
+                        <button class="cart-btn" type="button">장바구니</button>
                     </div>
                     <div style="display: none" class="sold-out">품절</div>
                 </div>
@@ -40,8 +28,11 @@
                 <button class="tab_button" type="button">Q&A</button>
                 <button class="tab_button" type="button">반품/교환정보</button>
             </section>
-            <div class="not-add-product-modal"></div>
+            <div style="display: none" class="to-cart-modal"></div>
         </main>
-        <script type="module" src="../components/product-details.js"></script>
+        <script
+            type="module"
+            src="../services/product-details/product-datails-index.js"
+        ></script>
     </body>
 </html>

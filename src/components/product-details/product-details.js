@@ -1,8 +1,12 @@
-import { fetchProductById } from "../services/product-list/product-list-api.js";
+import { fetchProductById } from "../../services/product-details/product-datails-api.js";
+import { addCartItems, fetchCartList } from "../../services/cart/cart-api.js";
+import { renderToCartModal } from "./product-details-modal.js";
 
 const $productImg = document.querySelector(".product-details__img");
 const $productInfo = document.querySelector(".product-details__constents-info");
 const $productTotal = document.querySelector(".product-total");
+
+const $toCartModal = document.querySelector(".to-cart-modal");
 
 const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get("id");
@@ -16,13 +20,12 @@ async function loadProductDetail() {
     if (product) {
         currentProduct = product;
         renderProductDetail(product);
-        setEventListener();
+        quantityBtnEventListener();
+        cartBtnEventListener();
     } else {
         alert("상품 정보를 불러올 수 없습니다.");
     }
 }
-
-loadProductDetail();
 
 // 해당 상품 정보 렌더 함수
 function renderProductDetail(product) {
@@ -41,7 +44,7 @@ function renderProductDetail(product) {
         <p class="product-details__price" aria-label="가격">
             <span id="total-amount">${product.price.toLocaleString()}</span>원
         </p>
-        <p class="delivery-options">${product.shipping_method === "PARCEL" ? "택배배송" : "직접배송"} / 무료배송</p>
+        <p class="delivery-options">${product.shipping_method === "PARCEL" ? "택배배송" : "직접배송"} / ${product.shipping_fee !== 0 ? `${product.shipping_fee.toLocaleString()}원` : "무료배송"}</p>
         <hr />
         <div class="product-quantity">
             <button class="product-quantity__minus" type="button" aria-label="${product.info} 수량 감소 버튼"></button>
@@ -69,10 +72,9 @@ function renderProductDetail(product) {
 }
 
 // 수량 버튼 클릭 이벤트 함수
-function setEventListener() {
+function quantityBtnEventListener() {
     const $minusBtn = document.querySelector(".product-quantity__minus");
     const $plusBtn = document.querySelector(".product-quantity__plus");
-
     if ($minusBtn) {
         $minusBtn.addEventListener("click", decreaseQuantity);
     }
@@ -84,9 +86,15 @@ function setEventListener() {
 
 // 수량 감소 함수
 function decreaseQuantity() {
+    const $plusBtn = document.querySelector(".product-quantity__plus");
     if (productQuantity > 1) {
         productQuantity--;
         updateQuantity();
+    }
+
+    if ($plusBtn.disabled) {
+        $plusBtn.disabled = false;
+        $plusBtn.style.cursor = "pointer";
     }
 }
 
@@ -132,24 +140,61 @@ function soldOut() {
     $soldOut.style.display = "block";
 }
 
-// 장바구니에 해당 상품 정보 넘겨주기
-// function AddProduct() {
-//     const $cartBtn = document.querySelector(".cart-btn");
-//     $cartBtn.addEventListener(
-//         "click",
-//         addCartItems(currentProduct.id, productQuantity)
-//     );
-// }
+// 장바구니 클릭 이벤트
+function cartBtnEventListener() {
+    const $cartBtn = document.querySelector(".cart-btn");
+
+    if ($cartBtn) {
+        $cartBtn.addEventListener("click", isCartItems);
+    }
+}
+
+// 장바구니에 해당 상품 있는지 확인
+async function isCartItems() {
+    const cartData = await fetchCartList();
+    const productId = cartData.map((item) => item.product.id);
+
+    if (productId.includes(currentProduct.id)) {
+        notAddProductModal();
+    } else {
+        addCartItems(currentProduct.id, productQuantity);
+        addCartConfirm();
+    }
+}
+
+// 장바구니에 상품 추가했을 때의 알림창
+function addCartConfirm() {
+    if (
+        confirm(
+            `장바구니에 상품이 추가 되었습니다.\n장바구니로 이동하시겠습니까?`
+        )
+    ) {
+        location.href = `./cart.html`;
+    }
+}
 
 // 이미 장바구니에 담긴 상품을 다시 담으려고 할 때 모달 띄우는 함수
-// function notAddProductModal() {
-//     const $buyBtn = document.querySelector(".buy-btn");
-//     const $cartBtn = document.querySelector(".cart-btn");
-// }
+function notAddProductModal() {
+    $toCartModal.innerHTML = renderToCartModal();
+    $toCartModal.style.display = "block";
+    toCartOrCancel();
+}
 
-// function isCartItems() {
+// 장바구니 이동 여부 선택 함수
+function toCartOrCancel() {
+    const $cancel = document.querySelector(".to-cart-modal__cancel");
+    const $confirm = document.querySelector(".to-cart-modal__confirm");
+    if ($cancel) {
+        $cancel.addEventListener("click", () => {
+            $toCartModal.style.display = "none";
+        });
+    }
 
-//     addCartItems(productId, productQuantity);
-// }
+    if ($confirm) {
+        $confirm.addEventListener("click", () => {
+            location.href = `./cart.html`;
+        });
+    }
+}
 
-export { productId };
+export { loadProductDetail, quantityBtnEventListener, cartBtnEventListener };
