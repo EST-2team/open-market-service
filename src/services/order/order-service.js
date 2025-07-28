@@ -178,7 +178,6 @@ function createOrderData() {
 function daumPostcode() {
     new daum.Postcode({
         oncomplete: function (data) {
-            console.log(data);
             let addr = ""; // 주소 변수
             let extraAddr = ""; // 참고항목 변수
 
