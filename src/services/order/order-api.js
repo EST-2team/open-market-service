@@ -1,3 +1,5 @@
+import { customFetch } from "../../utils/customFetch.js";
+
 async function createOrder(order) {
     try {
         const accessToken = localStorage.getItem("accessToken");
@@ -20,7 +22,7 @@ async function createOrder(order) {
                 payment_method: order.paymentMethod,
             }),
         };
-        const res = await fetch(url, options);
+        const res = await customFetch(url, options);
 
         if (!res.ok) {
             const error = await res.json();
