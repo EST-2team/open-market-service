@@ -1,0 +1,107 @@
+$background-color: #f2f2f2;
+$main-text-color: #000;
+$secondary-text-color: #767676;
+
+%banner-btn {
+    position: absolute;
+    width: 60px;
+    height: 124px;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+%banner-li-btn-round {
+    border-radius: 50%;
+}
+
+.banner {
+    width: 100%;
+    height: 500px;
+    background-color: $background-color;
+    position: relative;
+
+    &__prev-btn {
+        @extend %banner-btn;
+        background-image: url("../../assets/icons/icon-swiper-1.svg");
+    }
+
+    &__next-btn {
+        @extend %banner-btn;
+        right: 0;
+        background-image: url("../../assets/icons/icon-swiper-2.svg");
+    }
+
+    &-list {
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        width: 54px;
+        height: 6px;
+        top: calc(100% - 20px);
+        left: calc(50% - 27px);
+    }
+
+    &-list .banner-list__btn1 {
+        @extend %banner-li-btn-round;
+        background-color: #000;
+    }
+
+    &-list li button {
+        @extend %banner-li-btn-round;
+        width: 6px;
+        height: 6px;
+        background-color: #fff;
+    }
+}
+
+.product {
+    margin: 80px 320px 180px;
+    max-width: 1280px;
+    font-family: "Spoqa Han Sans Neo", sans-serif;
+
+    .product-list {
+        display: grid;
+        gap: 78px 70px;
+        justify-content: center;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.product-item {
+    width: 380px;
+    height: 490px;
+    font-weight: 400;
+    color: $main-text-color;
+    text-align: left;
+
+    &__img {
+        width: 380;
+        height: 380;
+        border-radius: 10px;
+        border: 1px $background-color;
+        margin-bottom: 16px;
+    }
+
+    &__seller {
+        color: $secondary-text-color;
+        height: 22px;
+    }
+
+    &__info {
+        font-size: 18px;
+        margin: 10px 0 10px;
+        height: 22px;
+    }
+
+    &__price {
+        height: 30px;
+    }
+
+    &__price span {
+        margin: 0px 2px 0px 0;
+        height: 30px;
+        font-size: 24px;
+        font-weight: 700;
+        vertical-align: text-bottom;
+    }
+}

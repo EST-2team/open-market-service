@@ -11,9 +11,7 @@ function renderProduct(products) {
         // li.style.cursor = "pointer"; // css로 구현 예정
 
         li.innerHTML = `
-            <div class="product-item__img">
-                <img src="${product.image}" alt="${product.info}" />
-            </div>
+           <img class="product-item__img" src="${product.image}" alt="${product.info}" />       
             <p class="product-item__seller" aria-label="판매점">
                 ${product.seller.store_name}
             </p>
@@ -21,7 +19,7 @@ function renderProduct(products) {
                 ${product.info}
             </h3>
             <p class="product-item__price" aria-label="가격">
-                ${product.price.toLocaleString()}
+                <span id="product-item__price--num">${product.price.toLocaleString()}</span>원
             </p>
         `;
 
