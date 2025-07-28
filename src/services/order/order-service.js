@@ -159,7 +159,7 @@ function createOrderData() {
     const $address = document.querySelector("#address");
     const $addressDetail = document.querySelector("#address-detail");
     const $deliveryMsg = document.querySelector("#delivery-msg");
-    const checkedPaymentMethod = document.querySelector(
+    const $checkedPaymentMethod = document.querySelector(
         'input[type="radio"]:checked'
     );
 
@@ -171,11 +171,50 @@ function createOrderData() {
         receiverPhoneNumber: recipientMobile123,
         address: `${$address.value} ${$addressDetail.value}`,
         addressMessage: $deliveryMsg.value,
-        paymentMethod: checkedPaymentMethod.value,
+        paymentMethod: $checkedPaymentMethod.value,
     };
 }
 
-//우편번호 조회
+function daumPostcode() {
+    new daum.Postcode({
+        oncomplete: function (data) {
+            console.log(data);
+            let addr = ""; // 주소 변수
+            let extraAddr = ""; // 참고항목 변수
+
+            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+            if (data.userSelectedType === "R") {
+                addr = data.roadAddress;
+            } else {
+                addr = data.jibunAddress;
+            }
+
+            // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+            if (data.userSelectedType === "R") {
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if (data.bname !== "" && /[동|로|가]$/g.test(data.bname)) {
+                    extraAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if (data.buildingName !== "" && data.apartment === "Y") {
+                    extraAddr +=
+                        extraAddr !== ""
+                            ? ", " + data.buildingName
+                            : data.buildingName;
+                }
+                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if (extraAddr !== "") {
+                    extraAddr = " (" + extraAddr + ")";
+                }
+            }
+
+            document.getElementById("zipcode").value = data.zonecode;
+            document.getElementById("address").value = addr + extraAddr;
+            document.getElementById("address-detail").focus();
+        },
+    }).open();
+}
 
 function initInputValidListener() {
     inputValidListener(".order__user-name", /[^a-zA-Z가-힣ㄱ-ㅎㅏ-ㅣ\s]/);
@@ -201,7 +240,18 @@ async function initOrderListener() {
     renderFinalProductOrderTotalPrice();
     initInputValidListener();
 
-    const paymentBtn = document.querySelector(".order__payment-btn");
+    const $paymentBtn = document.querySelector(".order__payment-btn");
+    const $addressSearchBtn = document.querySelector(".address-search-btn");
+    const $zipcode = document.querySelector("#zipcode");
+
+    $addressSearchBtn.addEventListener("click", () => {
+        daumPostcode();
+    });
+    $zipcode.addEventListener("click", () => {
+        if ($zipcode.value.trim().length === 0) {
+            daumPostcode();
+        }
+    });
 
     document.querySelectorAll("input").forEach((input) => {
         input.addEventListener("focusout", () => {
@@ -210,22 +260,22 @@ async function initOrderListener() {
                 validAgree() &&
                 validPaymentMethod()
             ) {
-                paymentBtn.classList.add("active");
+                $paymentBtn.classList.add("active");
             } else {
-                paymentBtn.classList.remove("active");
+                $paymentBtn.classList.remove("active");
             }
         });
     });
 
-    const checkableInputs = document.querySelectorAll(
+    const $checkableInputs = document.querySelectorAll(
         "input[type='checkbox'], input[type='radio']"
     );
-    checkableInputs.forEach((input) => {
+    $checkableInputs.forEach((input) => {
         input.addEventListener("change", (event) => {
             if (validAgree() && validPaymentMethod()) {
                 event.target.blur();
             } else {
-                paymentBtn.classList.remove("active");
+                $paymentBtn.classList.remove("active");
             }
         });
     });
