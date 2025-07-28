@@ -16,7 +16,7 @@ async function createOrder(order) {
                 receiver: order.receiver,
                 receiver_phone_number: order.receiverPhoneNumber,
                 address: order.address,
-                address_message: order.addressMessage,
+                delivery_message: order.deliveryMessage,
                 payment_method: order.paymentMethod,
             }),
         };
@@ -28,7 +28,7 @@ async function createOrder(order) {
             throw new Error("주문 생성 중 오류가 발생하였습니다.");
         }
 
-        location.replace("/src/pages/product-list.html");
+        location.replace("./product-list.html");
     } catch (error) {
         console.error(error);
         alert(error);

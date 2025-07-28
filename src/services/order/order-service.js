@@ -170,7 +170,7 @@ function createOrderData() {
         receiver: $recipientName.value,
         receiverPhoneNumber: recipientMobile123,
         address: `${$address.value} ${$addressDetail.value}`,
-        addressMessage: $deliveryMsg.value,
+        deliveryMessage: $deliveryMsg.value,
         paymentMethod: $checkedPaymentMethod.value,
     };
 }
