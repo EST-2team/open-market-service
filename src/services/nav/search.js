@@ -1,7 +1,12 @@
-document.addEventListener("DOMContentLoaded", () => {
+export function initSearch() {
     const searchInput = document.getElementById("search");
     const searchBtn = document.querySelector(".search-btn");
     const productList = document.querySelector(".product-list");
+
+    if (!searchInput || !searchBtn || !productList) {
+        console.warn("검색 요소가 준비되지 않았습니다.");
+        return;
+    }
 
     async function searchProducts(query) {
         if (!query.trim()) {
@@ -51,4 +56,4 @@ document.addEventListener("DOMContentLoaded", () => {
             searchProducts(searchInput.value);
         }
     });
-});
+}
