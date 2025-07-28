@@ -382,6 +382,12 @@
         line-height: 100%;
         text-align: center;
         vertical-align: middle;
+
+        cursor: not-allowed;
+    }
+    .final-payment-info-box &__payment-btn.active {
+        background-color: #21bf48;
+        cursor: pointer;
     }
     &__final-box--bg {
         display: flex;
