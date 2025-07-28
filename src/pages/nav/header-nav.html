@@ -1,12 +1,12 @@
 <nav class="header-nav">
     <div class="header-logo">
         <h1 class="logo">
-            <a href="../product-list.html"
-                >HODU
-                <!-- <img src="" alt=""> -->
+            <a href="/src/pages/product-list.html">
+                <img src="/src/assets/icons/Logo-hodu.png" alt="HODU로고" />
             </a>
         </h1>
     </div>
+
     <div class="search-form" role="search" aria-label="검색">
         <label for="search" class="hidden sr-only">검색</label>
         <input
@@ -15,15 +15,21 @@
             name="search"
             placeholder="상품을 검색해보세요!"
         />
-        <button class="search-btn">🔍</button>
+        <button class="search-btn" aria-label="검색"></button>
     </div>
 
     <div class="user-nav">
         <div class="cart-nav">
-            <a href="../cart.html">장바구니</a>
+            <a href="/src/pages/cart.html" class="cart-link">
+                <span class="icon-cart"></span>
+                <span class="label">장바구니</span>
+            </a>
         </div>
         <div class="login">
-            <a href="../login/login.html">로그인</a>
+            <a href="/src/pages/login/login.html" class="login-link">
+                <span class="icon-user"></span>
+                <span class="label">로그인</span>
+            </a>
         </div>
     </div>
 </nav>
