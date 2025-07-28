@@ -22,37 +22,14 @@
                         </tr>
                     </thead>
                     <tbody class="order__list">
-                        <tr>
-                            <td class="order__product-info">
-                                <img
-                                    class="order__product-img"
-                                    src="./test.png"
-                                    alt=""
-                                />
-                                <h4 class="order__product-seller">
-                                    백엔드 글로벌
-                                </h4>
-                                <p class="order__product-name">
-                                    딥러닝 개발자 무릎 담요
-                                </p>
-                                <p class="order__product-quantity">
-                                    수량 : 1개
-                                </p>
-                            </td>
-                            <td class="order__product-discount">
-                                <span aria-hidden="true">-</span>
-                            </td>
-                            <td class="order__product-fee">
-                                <span>무료배송</span>
-                            </td>
-                            <td class="order__product-price">17,500원</td>
-                        </tr>
+                        <tr></tr>
                     </tbody>
                     <tfoot>
                         <tr>
                             <th class="sr-only" scope="row">합계</th>
                             <td colspan="3">
-                                총 주문금액 <span>46,500원</span>
+                                총 주문금액
+                                <span class="order__total-price">0원</span>
                             </td>
                         </tr>
                     </tfoot>
@@ -311,5 +288,6 @@
                 </form>
             </section>
         </main>
+        <script type="module" src="../services/order/order-index.js"></script>
     </body>
 </html>
