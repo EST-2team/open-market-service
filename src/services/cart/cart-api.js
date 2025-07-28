@@ -1,3 +1,5 @@
+import { customFetch } from "../../utils/customFetch.js";
+
 let cartData = [];
 
 async function addCartItems(productId, productQuantity) {
@@ -38,7 +40,7 @@ async function fetchCartList() {
                 Authorization: `Bearer ${accessToken}`,
             },
         };
-        const res = await fetch(url, options);
+        const res = await customFetch(url, options);
 
         if (!res.ok) {
             throw new Error("장바구니 목록 조회 중 오류가 발생하였습니다.");
@@ -67,7 +69,7 @@ async function deleteCartItem(itemId) {
                 Authorization: `Bearer ${accessToken}`,
             },
         };
-        const res = await fetch(url, options);
+        const res = await customFetch(url, options);
 
         if (!res.ok) {
             throw new Error("장바구니 상품 삭제 중 오류가 발생하였습니다.");
@@ -95,7 +97,7 @@ async function updateCartItemQuantity(item) {
                 quantity: parseInt(item.quantity, 10),
             }),
         };
-        const res = await fetch(url, options);
+        const res = await customFetch(url, options);
 
         if (!res.ok) {
             throw new Error(

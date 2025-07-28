@@ -45,6 +45,9 @@
         border-bottom: 1px solid #e0e0e0;
         padding-bottom: 17px;
     }
+    &__product-info {
+        padding-left: 8px;
+    }
     &__product-info &__product-img {
         width: 104px;
         border-radius: 10px;
@@ -146,7 +149,7 @@
         line-height: 100%;
         vertical-align: middle;
     }
-    .user-name {
+    .user-name-label {
         margin-right: 140px;
     }
     &__user-name {
@@ -379,6 +382,12 @@
         line-height: 100%;
         text-align: center;
         vertical-align: middle;
+
+        cursor: not-allowed;
+    }
+    .final-payment-info-box &__payment-btn.active {
+        background-color: #21bf48;
+        cursor: pointer;
     }
     &__final-box--bg {
         display: flex;
