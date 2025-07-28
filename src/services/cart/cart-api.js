@@ -18,7 +18,7 @@ async function addCartItems(productId, productQuantity) {
                 quantity: parseInt(productQuantity, 10),
             }),
         };
-        const res = await fetch(url, options);
+        const res = await customFetch(url, options);
 
         if (!res.ok) {
             throw new Error("장바구니에 상품을 추가 중 오류가 발생하였습니다.");
