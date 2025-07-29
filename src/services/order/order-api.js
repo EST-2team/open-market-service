@@ -5,13 +5,9 @@ async function createOrder(order) {
         const accessToken = localStorage.getItem("accessToken");
 
         const url = `https://api.wenivops.co.kr/services/open-market/order/`;
-        const options = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${accessToken}`,
-            },
-            body: JSON.stringify({
+        let body;
+        if (order.orderType === "cart_order") {
+            body = JSON.stringify({
                 order_type: order.orderType,
                 cart_items: order.cartItems,
                 total_price: order.totalPrice,
@@ -20,7 +16,28 @@ async function createOrder(order) {
                 address: order.address,
                 delivery_message: order.deliveryMessage,
                 payment_method: order.paymentMethod,
-            }),
+            });
+        } else if (order.orderType === "direct_order") {
+            body = JSON.stringify({
+                order_type: order.orderType,
+                product: order.product,
+                quantity: order.quantity,
+                total_price: order.totalPrice,
+                receiver: order.receiver,
+                receiver_phone_number: order.receiverPhoneNumber,
+                address: order.address,
+                delivery_message: order.deliveryMessage,
+                payment_method: order.paymentMethod,
+            });
+        }
+
+        const options = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${accessToken}`,
+            },
+            body: body,
         };
         const res = await customFetch(url, options);
 

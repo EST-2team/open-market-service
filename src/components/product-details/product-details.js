@@ -150,7 +150,7 @@ function buyBtnEventListener() {
     }
 }
 function directOrder() {
-    const orderPageUrl = `../pages/order.html?order_type=direct_order&product=${productId}&quantity=${productQuantity}`;
+    const orderPageUrl = `../pages/order.html?order_type=direct_order&product_id=${productId}&quantity=${productQuantity}`;
     window.location.href = orderPageUrl;
 }
 

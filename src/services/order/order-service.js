@@ -1,19 +1,37 @@
 import { createOrder } from "./order-api.js";
 import { fetchCartList } from "../cart/cart-api.js";
 import { renderOrderItem } from "../../components/order/order-item.js";
+import { fetchProductById } from "../product-details/product-datails-api.js";
 
 let orderData = [];
 const urlParams = new URLSearchParams(window.location.search);
 const orderType = urlParams.get("order_type");
-const productList = urlParams.get("product_list");
+const cartItemIds = urlParams.get("cart_item_ids");
+const productId = urlParams.get("product_id");
+const paramQuantity = urlParams.get("quantity");
 
-async function getOrderItems() {
+async function getDirectOrderItems() {
+    const product = await fetchProductById(productId);
+    const orderItems = [
+        {
+            quantity: paramQuantity,
+            product,
+        },
+    ];
+    return { orderType, orderItems };
+}
+async function getCartOrderItems() {
     const cartData = await fetchCartList();
-    const orderItems = cartData.filter((item) => productList.includes(item.id));
+    const orderItems = cartData.filter((item) => cartItemIds.includes(item.id));
     return { orderType, orderItems };
 }
 async function renderOrderItems() {
-    orderData = await getOrderItems();
+    if (orderType === "cart_order") {
+        orderData = await getCartOrderItems();
+    } else if (orderType === "direct_order") {
+        orderData = await getDirectOrderItems();
+    }
+    console.log(orderData);
     renderOrderItem(orderData);
 }
 function getTotalPriceWithShipping() {
@@ -164,6 +182,50 @@ function createOrderData() {
     );
 
     return {
+        productIds,
+        $recipientName,
+        recipientMobile123,
+        $address,
+        $addressDetail,
+        $deliveryMsg,
+        $checkedPaymentMethod,
+    };
+}
+function createDirectOrderData() {
+    const {
+        productIds,
+        $recipientName,
+        recipientMobile123,
+        $address,
+        $addressDetail,
+        $deliveryMsg,
+        $checkedPaymentMethod,
+    } = createOrderData();
+    return {
+        orderType: orderType,
+        product: productIds[0],
+        quantity: paramQuantity,
+        totalPrice: getTotalPriceWithShipping(),
+        receiver: $recipientName.value,
+        receiverPhoneNumber: recipientMobile123,
+        address: `${$address.value} ${$addressDetail.value}`,
+        deliveryMessage: $deliveryMsg.value,
+        paymentMethod: $checkedPaymentMethod.value,
+    };
+}
+
+function createCartOrderData() {
+    const {
+        productIds,
+        $recipientName,
+        recipientMobile123,
+        $address,
+        $addressDetail,
+        $deliveryMsg,
+        $checkedPaymentMethod,
+    } = createOrderData();
+
+    return {
         orderType: orderType,
         cartItems: productIds,
         totalPrice: getTotalPriceWithShipping(),
@@ -290,7 +352,11 @@ async function initOrderListener() {
             validPaymentMethod() &&
             $activeBtn
         ) {
-            await createOrder(createOrderData());
+            if (orderType === "cart_order") {
+                await createOrder(createCartOrderData());
+            } else if (orderType === "direct_order") {
+                await createOrder(createDirectOrderData());
+            }
         }
     });
 }
