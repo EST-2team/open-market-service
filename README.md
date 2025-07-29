@@ -13,9 +13,31 @@
 - **Vanilla JavaScript ES6+**: ES6 이상의 문법을 사용하여 순수 자바스크립트만으로 개발
 
 ## 네이밍 규칙 및 컨벤션
-### BEM 방법론 (Block, Element, Modifier)
-### 코드 컨벤션
+- BEM 방법론 (Block, Element, Modifier)
+- 모든 파일 들여쓰기: 4칸
+### 🧑‍💻 코드 컨벤션
+#### ✅ HTML
+- 태그는 소문자로 작성
+- 속성 순서: id → class → name → data-* → src/href → 기타
+- 모든 태그는 명확하게 닫기 (<img />, <input /> 제외)
+- 의미에 맞는 시멘틱 태그 사용 권장 (<section>, <nav>, <main> 등)
+
+#### ✅ Sass / SCSS
+- 변수, 믹스인, 함수는 kebab-case 사용 ($primary-color)
+- Nesting은 2단계까지만 허용
+- 공통 스타일은 _variables.scss, _mixins.scss 등으로 분리
+
+#### ✅ JavaScript
+- const, let 사용 (var 사용 금지)
+- 세미콜론(;) 필수
+- 변수/함수명은 camelCase, 클래스명은 PascalCase
+- 한 파일에는 하나의 주요 기능만 구현
+
 ### 💬 커밋 컨벤션
+#### ✅ 브랜치 전략 (GitHub Flow)
+- main: 배포 가능한 상태
+- feature/기능명: 기능 개발
+- fix/버그명: 버그 수정
 
 ## 프로젝트 소개
 ## 구현 페이지별 역할 분담
