@@ -1,5 +1,4 @@
 $background-color: #f2f2f2;
-$main-text-color: #000;
 $secondary-text-color: #767676;
 
 %banner-btn {
@@ -15,6 +14,7 @@ $secondary-text-color: #767676;
 }
 
 .banner {
+    margin-top: 90px;
     width: 100%;
     height: 500px;
     background-color: $background-color;
@@ -42,7 +42,6 @@ $secondary-text-color: #767676;
     }
 
     &-list .banner-list__btn1 {
-        @extend %banner-li-btn-round;
         background-color: #000;
     }
 
@@ -56,13 +55,12 @@ $secondary-text-color: #767676;
 
 .product {
     margin: 80px 320px 180px;
-    max-width: 1280px;
     font-family: "Spoqa Han Sans Neo", sans-serif;
-
     .product-list {
         display: grid;
         gap: 78px 70px;
         justify-content: center;
+        justify-items: center;
         grid-template-columns: repeat(3, 1fr);
     }
 }
@@ -71,8 +69,8 @@ $secondary-text-color: #767676;
     width: 380px;
     height: 490px;
     font-weight: 400;
-    color: $main-text-color;
     text-align: left;
+    cursor: pointer;
 
     &__img {
         width: 380;
@@ -98,7 +96,7 @@ $secondary-text-color: #767676;
     }
 
     &__price span {
-        margin: 0px 2px 0px 0;
+        margin-right: 2px;
         height: 30px;
         font-size: 24px;
         font-weight: 700;
