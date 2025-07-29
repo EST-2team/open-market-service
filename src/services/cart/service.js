@@ -1,7 +1,7 @@
 import { getCartData } from "./cart-api.js";
 import { renderPaymentInfo } from "../../components/cart/payment-info.js";
 
-const orderPageUrl = `../pages/order.html?order_type=cart_order&product_list=`;
+const orderPageUrl = `../pages/order.html?order_type=cart_order&cart_item_ids=`;
 
 function singleOrder(itemId) {
     window.location.href = orderPageUrl + itemId;
