@@ -12,7 +12,8 @@ export const login = async ({ username, password }) => {
         );
         if (!response.ok) {
             const errorData = await response.json();
-            alert(errorData.error);
+            const loginError = document.querySelector(".login-error");
+            loginError.innerText = errorData.error;
             return;
         }
 
