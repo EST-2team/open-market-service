@@ -1,29 +1,22 @@
-import { validateUsername } from "./signup-validate-username-api.js";
+import { signup } from "./signup-api.js";
+import { validateUsername } from "./signup-api.js";
 
-export function validateUsernameInput() {
-    const usernameInput = document.querySelector("#username");
-    const checkMsg = document.querySelector("#userid-check-msg");
-
-    const username = usernameInput.value.trim();
-    if (!username) {
-        checkMsg.textContent = "아이디를 입력하세요.";
-        checkMsg.style.color = "red";
-        return false;
+// 각 필드별 에러 메시지 출력 함수
+function showErrorMessage(selector, message) {
+    const el = document.querySelector(selector);
+    if (el) {
+        el.textContent = message;
+        el.style.color = "red";
     }
-
-    const usernameRegex = /^[a-zA-Z0-9]{1,20}$/;
-    if (!usernameRegex.test(username)) {
-        checkMsg.textContent =
-            "ID는 20자 이내의 영어 소문자, 대문자, 숫자만 가능합니다.";
-        checkMsg.style.color = "red";
-        return false;
-    }
-
-    checkMsg.textContent = "";
-    return true;
 }
 
-// 아이디 중복확인
+function clearErrorMessages() {
+    showErrorMessage("#userid-check-msg", "");
+    showErrorMessage("#password-msg", "");
+    showErrorMessage("#name-msg", "");
+    showErrorMessage("#mobile3-msg", "");
+}
+
 export function duplicateUsername() {
     const usernameInput = document.querySelector("#username");
     const checkbtn = document.querySelector(".signup-form__button--id-check");
@@ -49,7 +42,27 @@ export function duplicateUsername() {
     });
 }
 
-// 이름 유효성 검사
+export function validateUsernameInput() {
+    const usernameInput = document.querySelector("#username");
+    const checkMsg = document.querySelector("#userid-check-msg");
+
+    const username = usernameInput.value.trim();
+    if (!username) {
+        checkMsg.textContent = "아이디를 입력하세요.";
+        checkMsg.style.color = "red";
+        return false;
+    }
+    const usernameRegex = /^[a-zA-Z0-9]{1,20}$/;
+    if (!usernameRegex.test(username)) {
+        checkMsg.textContent =
+            "ID는 20자 이내의 영어 소문자, 대문자, 숫자만 가능합니다.";
+        checkMsg.style.color = "red";
+        return false;
+    }
+
+    checkMsg.textContent = "";
+    return true;
+}
 export function validateName() {
     const nameInput = document.querySelector("#name");
     const nameMsg = document.querySelector("#name-msg");
@@ -63,14 +76,11 @@ export function validateName() {
     nameMsg.textContent = "";
     return true;
 }
-
-// 비밀번호 유효성 검사
 export function validatePassword() {
     const passwordInput = document.querySelector("#password");
     const passwordMsg = document.querySelector("#password-msg");
 
     const password = passwordInput.value;
-
     if (password.length < 8) {
         passwordMsg.textContent = "비밀번호는 8자 이상이어야 합니다.";
         passwordMsg.style.color = "red";
@@ -94,8 +104,6 @@ export function validatePassword() {
     passwordMsg.textContent = "";
     return true;
 }
-
-// 비밀번호 재확인
 export function passwordMatch() {
     const password = document.querySelector("#password").value;
     const passwordCheck = document.querySelector("#passwordCheck").value;
@@ -116,8 +124,6 @@ export function passwordMatch() {
     passwordCheckMsg.style.color = "#21BF48";
     return true;
 }
-
-// 전화번호
 export function phoneNumberMatch() {
     const midPhoneNum = document.querySelector("#mobile2");
     const lastPhoneNum = document.querySelector("#mobile3");
@@ -151,7 +157,6 @@ export function phoneNumberMatch() {
     return isValid;
 }
 
-// 약관동의
 export function agreeCheck() {
     const agree = document.querySelector("#agree");
     const agreeMsg = document.querySelector("#agree-msg");
@@ -164,18 +169,18 @@ export function agreeCheck() {
     if (agreeMsg) agreeMsg.textContent = "";
     return true;
 }
-
-// 폼 유효성 검사 통합
 export function setupFormValidation() {
     const signupForm = document.querySelector("#signup-form");
     const usernameInput = document.querySelector("#username");
     const passwordInput = document.querySelector("#password");
+    const passwordCheck = document.querySelector("#passwordCheck");
 
-    // 포커스 잃으면 검증 실행
+    // 포커스 잃으면 검증
     usernameInput.addEventListener("blur", validateUsernameInput);
     passwordInput.addEventListener("blur", validatePassword);
+    passwordCheck.addEventListener("blur", passwordMatch);
 
-    signupForm.addEventListener("submit", (e) => {
+    signupForm.addEventListener("submit", async (e) => {
         e.preventDefault();
 
         const isValidateUsernameInput = validateUsernameInput();
@@ -186,14 +191,65 @@ export function setupFormValidation() {
         const isAgreeChecked = agreeCheck();
 
         if (
-            isValidateUsernameInput &&
-            isNameValid &&
-            isPasswordValid &&
-            isPasswordMatch &&
-            isPhoneNumberMatch &&
-            isAgreeChecked
-        ) {
-            signupForm.submit(); // 모든 유효성 검사 통과 시 제출
+            !(
+                isValidateUsernameInput &&
+                isNameValid &&
+                isPasswordValid &&
+                isPasswordMatch &&
+                isPhoneNumberMatch &&
+                isAgreeChecked
+            )
+        )
+            return;
+
+        const username = document.querySelector("#username").value.trim();
+        const password = document.querySelector("#password").value;
+        const name = document.querySelector("#name").value.trim();
+        const phone_number =
+            document.querySelector("#mobile1").value.trim() +
+            document.querySelector("#mobile2").value.trim() +
+            document.querySelector("#mobile3").value.trim();
+
+        // 서버 에러 메시지 초기화
+        document.querySelector("#userid-check-msg").textContent = "";
+        document.querySelector("#password-msg").textContent = "";
+        document.querySelector("#name-msg").textContent = "";
+        document.querySelector("#mobile3-msg").textContent = "";
+
+        const result = await signup({ username, password, name, phone_number });
+
+        if (result.success) {
+            alert("회원가입이 완료되었습니다.");
+            signupForm.submit();
+            location.href = "/src/pages/product-list.html";
+        } else if (result.error) {
+            const error = result.error;
+
+            if (error.username) {
+                const el = document.querySelector("#userid-check-msg");
+                el.textContent = error.username[0];
+                el.style.color = "red";
+            }
+            if (error.password) {
+                const el = document.querySelector("#password-msg");
+                el.textContent = error.password[0];
+                el.style.color = "red";
+            }
+            if (error.name) {
+                const el = document.querySelector("#name-msg");
+                el.textContent = error.name[0];
+                el.style.color = "red";
+            }
+            if (error.phone_number) {
+                const el = document.querySelector("#mobile3-msg");
+                el.textContent = error.phone_number[0];
+                el.style.color = "red";
+            }
+            if (error.network) {
+                alert(error.network[0]);
+            }
+        } else {
+            alert("알 수 없는 오류가 발생했습니다.");
         }
     });
 }

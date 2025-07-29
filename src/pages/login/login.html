@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../../assets/css/style.css" />
         <title>로그인</title>
         <style>
             .hidden {
@@ -10,8 +11,14 @@
             }
         </style>
     </head>
-    <body>
-        <!-- <header></header> -->
+    <body class="login">
+        <header>
+            <h1>
+                <a href="/src/pages/product-list.html"
+                    ><img src="../../assets/icons/Logo-hodu.png" alt="로고"
+                /></a>
+            </h1>
+        </header>
         <main>
             <div class="login-container">
                 <div class="login-tab">
@@ -24,33 +31,35 @@
                 </div>
                 <form id="buyer-form" class="login-form">
                     <fieldset>
-                        <legend>구매회원 로그인</legend>
+                        <legend class="sr-only">구매회원 로그인</legend>
                         <input type="text" placeholder="아이디" required />
                         <input
                             type="password"
                             placeholder="비밀번호"
                             required
                         />
+                        <span class="login-error"></span>
                         <button type="submit">로그인</button>
                     </fieldset>
                 </form>
 
                 <form id="seller-form" class="login-form hidden">
                     <fieldset>
-                        <legend>판매회원 로그인</legend>
+                        <legend class="sr-only">판매회원 로그인</legend>
                         <input type="text" placeholder="아이디" required />
                         <input
                             type="password"
                             placeholder="비밀번호"
                             required
                         />
+                        <span class="login-error"></span>
                         <button type="submit">로그인</button>
                     </fieldset>
                 </form>
             </div>
             <div class="login-links">
-                <a href="../signup/signup.html">회원가입</a> |
-                <a href="#">비밀번호 찾기</a>
+                <a href="../signup/signup.html">회원가입</a
+                ><a href="#">비밀번호 찾기</a>
             </div>
         </main>
         <!-- <footer></footer> -->
