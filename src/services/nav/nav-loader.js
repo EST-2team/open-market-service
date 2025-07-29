@@ -38,7 +38,7 @@ fetch("/src/pages/nav/header-nav.html")
               <span class="label" style="font-size: 12px; color: #767676;">마이페이지</span>
             </button>
             <div class="dropdown-menu hidden" role="menu" aria-label="사용자 메뉴">
-              <a href="/src/pages/mypage.html" role="menuitem">내 정보</a>
+              <a href="/src/pages/mypage.html" role="menuitem">마이페이지</a>
               <button id="logout-btn" role="menuitem">로그아웃</button>
             </div>
           </div>

@@ -221,6 +221,7 @@ export function setupFormValidation() {
         if (result.success) {
             alert("회원가입이 완료되었습니다.");
             signupForm.submit();
+            location.href = "/src/pages/product-list.html";
         } else if (result.error) {
             const error = result.error;
 
