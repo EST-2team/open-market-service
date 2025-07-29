@@ -1,4 +1,11 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 .cart {
+    flex-grow: 1;
+
     width: 100%;
     max-width: 1280px;
     margin: 0 auto;
@@ -71,6 +78,19 @@
 
     &__list {
         margin-top: 25px;
+    }
+    &__none {
+        text-align: center;
+    }
+    &__none p:first-of-type {
+        margin-top: 200px;
+        font-weight: 700;
+        font-size: 18px;
+    }
+    &__none p:last-of-type {
+        font-weight: 400;
+        font-size: 14px;
+        margin-top: 17px;
     }
     &__item td {
         border-top: #e0e0e0 2px solid;
