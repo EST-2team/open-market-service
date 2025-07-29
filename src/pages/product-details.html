@@ -3,10 +3,14 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../assets/css/style.css" />
         <title>상품 상세 페이지</title>
     </head>
     <body>
-        <!-- <header></header> -->
+        <header>
+            <nav class="nav-placeholder"></nav>
+        </header>
+
         <main>
             <section class="product-details">
                 <h2 class="sr-only">상품 상세 정보</h2>
@@ -18,23 +22,29 @@
                         <button class="buy-btn" type="button">바로 구매</button>
                         <button class="cart-btn" type="button">장바구니</button>
                     </div>
-                    <div style="display: none" class="sold-out">품절</div>
+                    <div class="sold-out">품절</div>
                 </div>
             </section>
             <section class="tab">
                 <h2 class="sr-only">해당 상품 추가 정보</h2>
-                <button class="tab_button" type="button">버튼</button>
-                <button class="tab_button" type="button">리뷰</button>
-                <button class="tab_button" type="button">Q&A</button>
-                <button class="tab_button" type="button">반품/교환정보</button>
+                <button class="tab-button1" type="button">버튼</button>
+                <button class="tab-button0" type="button">리뷰</button>
+                <button class="tab-button0" type="button">Q&A</button>
+                <button class="tab-button0" type="button">반품/교환정보</button>
             </section>
-            <div style="display: none" class="to-cart-modal"></div>
+            <dialog class="to-cart-modal"></dialog>
         </main>
-        <script src="../services/nav/nav-loader.js" defer></script>
+
+        <footer class="footer"></footer>
+
         <script
             type="module"
             src="../services/product-details/product-datails-index.js"
         ></script>
-        <script src="../services/nav/search.js"></script>
+        <script type="module" src="/src/services/nav/nav-loader.js"></script>
+        <script
+            type="module"
+            src="../services/footer/footer-loader.js"
+        ></script>
     </body>
 </html>

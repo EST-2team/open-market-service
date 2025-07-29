@@ -45,7 +45,7 @@ function renderProductDetail(product) {
             <span id="total-amount">${product.price.toLocaleString()}</span>원
         </p>
         <p class="delivery-options">${product.shipping_method === "PARCEL" ? "택배배송" : "직접배송"} / ${product.shipping_fee !== 0 ? `${product.shipping_fee.toLocaleString()}원` : "무료배송"}</p>
-        <hr />
+        <hr class="division"/>
         <div class="product-quantity">
             <button class="product-quantity__minus" type="button" aria-label="${product.info} 수량 감소 버튼"></button>
             <p class="product-quantity__total" aria-label="현재 수량">${productQuantity}</p>
@@ -55,9 +55,9 @@ function renderProductDetail(product) {
         `;
 
         $productTotal.innerHTML = `
-            <p id="total__text--strong">총 상품 금액</p>
-            <p id="total__result">
-                총 수량 <span class="total__quantity green">${productQuantity}</span>개 <span id="total-div">|</span> <span class="total__amount--strong green">${(product.price * productQuantity).toLocaleString()}</span><span class="total__won green">원</span>
+            <p class="product-total__text--strong">총 상품 금액</p>
+            <p class="product-total__result">
+                총 수량 <span class="product-total__quantity">${productQuantity}</span>개<span class="product-total-div">|</span><span class="product-total__amount--strong">${(product.price * productQuantity).toLocaleString()}</span><span class="product-total__won">원</span>
             </p>
         `;
 
@@ -176,16 +176,27 @@ function addCartConfirm() {
 // 이미 장바구니에 담긴 상품을 다시 담으려고 할 때 모달 띄우는 함수
 function notAddProductModal() {
     $toCartModal.innerHTML = renderToCartModal();
-    $toCartModal.style.display = "block";
+    $toCartModal.showModal();
+    $toCartModal.style.display = "flex";
     toCartOrCancel();
 }
 
 // 장바구니 이동 여부 선택 함수
 function toCartOrCancel() {
+    const $close = document.querySelector(".to-cart-modal__close");
     const $cancel = document.querySelector(".to-cart-modal__cancel");
     const $confirm = document.querySelector(".to-cart-modal__confirm");
+
+    if ($close) {
+        $close.addEventListener("click", () => {
+            $toCartModal.close();
+            $toCartModal.style.display = "none";
+        });
+    }
+
     if ($cancel) {
         $cancel.addEventListener("click", () => {
+            $toCartModal.close();
             $toCartModal.style.display = "none";
         });
     }

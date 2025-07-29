@@ -19,7 +19,7 @@ function renderProduct(products) {
                 ${product.info}
             </h3>
             <p class="product-item__price" aria-label="가격">
-                <span id="product-item__price--num">${product.price.toLocaleString()}</span>원
+                <span class="product-item__price--num">${product.price.toLocaleString()}</span>원
             </p>
         `;
 
