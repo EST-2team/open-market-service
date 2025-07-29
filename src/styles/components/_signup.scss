@@ -1,0 +1,185 @@
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+    color: #767676;
+    font-family: "Spoqa Han Sans Neo", sans-serif;
+
+    img {
+        margin: 70px 0;
+        width: 238px;
+        height: 74px;
+    }
+
+    .signup-form__fields-group {
+        border: 1px solid #c4c4c4;
+        border-radius: 10px;
+        padding: 35px;
+    }
+
+    .signup-form__field {
+        margin-top: 10px;
+    }
+
+    .signup-form__legend {
+        margin-bottom: 10px;
+        padding: 0;
+    }
+
+    .signup-form__input {
+        padding: 16px;
+        border-radius: 5px;
+        border: 1px solid #c4c4c4;
+        box-sizing: border-box;
+        width: 480px;
+        height: 54px;
+
+        /* margin-top 기존 10px → 0 으로 변경 */
+        margin-top: 0;
+    }
+
+    .signup-form__input--userid {
+        width: 346px;
+        margin-right: 12px;
+    }
+
+    .signup-form__button--id-check {
+        background-color: #21bf48;
+        border-radius: 5px;
+        color: #ffffff;
+        width: 122px;
+        height: 54px;
+
+        span {
+            font-size: 16px;
+        }
+    }
+
+    .msg {
+        margin-top: 10px;
+    }
+
+    .signup-form__input-wrapper {
+        position: relative;
+        width: 480px;
+        min-height: 54px;
+        // height: auto;
+        // overflow: hidden;
+
+        .signup-form__input-icon {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            right: 16px;
+            transform: translateY(-50%);
+            width: 28px;
+            height: 28px;
+            pointer-events: none;
+        }
+        .password-check-icon {
+            margin: 0;
+            // position: relative;
+            top: 50%;
+            right: 16px;
+            transform: translateY(-50%);
+            width: 28px;
+            height: 28px;
+            pointer-events: none;
+        }
+    }
+
+    .signup-form__select--mobile1 {
+        appearance: none;
+        width: 152px;
+        height: 54px;
+        text-align: center;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #c4c4c4;
+        margin-right: 10px;
+
+        background-image: url("/src/assets/icons/icon-up-arrow.svg");
+        background-repeat: no-repeat;
+        background-position: right 16px center;
+        background-size: 22px 22px;
+        padding-right: 37px;
+
+        &:hover {
+            border: 1px solid #21bf48;
+        }
+
+        &:focus {
+            background-image: url("/src/assets/icons/icon-down-arrow.svg");
+            background-repeat: no-repeat;
+            background-position: right 16px center; /* 오른쪽 끝에 위치 */
+            background-size: 22px 22px; /* 크기 조절 */
+            padding-right: 37px; /* 이미지 공간 확보 */
+            border: 2px solid #21bf48;
+            outline: none;
+        }
+    }
+
+    .signup-form__input--mobile2,
+    .signup-form__input--mobile3 {
+        appearance: none;
+        width: 152px;
+        height: 54px;
+        margin-right: 10px;
+    }
+
+    .signup-form__input--mobile3 {
+        margin-right: 0;
+    }
+
+    .signup-form__checkbox {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .signup-form__agreement-label {
+        position: relative;
+        padding-left: 30px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+
+        img {
+            position: absolute;
+            left: 0;
+            top: -70px;
+            width: 16px;
+            height: 16px;
+            pointer-events: none;
+        }
+    }
+
+    .signup-form__checkbox:checked + img {
+        content: url("/src/assets/icons/check-fill-box.svg");
+    }
+
+    .signup-form__agreement {
+        margin-top: 34px;
+        width: 480px;
+
+        a {
+            text-decoration: underline;
+            font-weight: bold;
+        }
+    }
+
+    .signup-form__submit-button {
+        margin-top: 34px;
+        font-weight: bold;
+        font-size: 18px;
+        width: 480px;
+        height: 60px;
+        text-align: center;
+        color: #ffffff;
+        background-color: #c4c4c4;
+        border-radius: 5px;
+    }
+}
