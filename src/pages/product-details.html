@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>상품 상세 페이지</title>
+        <link rel="stylesheet" href="../assets/css/style.css" />
+    </head>
+    <body>
+        <header>
+            <nav class="nav-placeholder"></nav>
+        </header>
+
+        <main>
+            <section class="product-details">
+                <h2 class="sr-only">상품 상세 정보</h2>
+                <div class="product-details__img"></div>
+                <div class="product-details__constents">
+                    <div class="product-details__constents-info"></div>
+                    <div class="product-total"></div>
+                    <div class="buy-or-cart">
+                        <button class="buy-btn" type="button">바로 구매</button>
+                        <button class="cart-btn" type="button">장바구니</button>
+                    </div>
+                    <div class="sold-out">품절</div>
+                </div>
+            </section>
+            <section class="tab">
+                <h2 class="sr-only">해당 상품 추가 정보</h2>
+                <button class="tab-button1" type="button">버튼</button>
+                <button class="tab-button0" type="button">리뷰</button>
+                <button class="tab-button0" type="button">Q&A</button>
+                <button class="tab-button0" type="button">반품/교환정보</button>
+            </section>
+            <dialog class="to-cart-modal"></dialog>
+        </main>
+
+        <footer class="footer"></footer>
+
+        <script
+            type="module"
+            src="../services/product-details/product-datails-index.js"
+        ></script>
+        <script type="module" src="/src/services/nav/nav-loader.js"></script>
+        <script
+            type="module"
+            src="../services/footer/footer-loader.js"
+        ></script>
+    </body>
+</html>

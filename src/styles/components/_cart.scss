@@ -1,0 +1,395 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.cart {
+    flex-grow: 1;
+
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+
+    font-family: "Spoqa Han Sans Neo", sans-serif;
+
+    &__title {
+        margin-top: calc(54px + 92px);
+
+        text-align: center;
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 44px;
+    }
+
+    &__table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 10px;
+    }
+
+    &__table-section {
+        margin-top: 52px;
+    }
+
+    &__header {
+        background-color: #f2f2f2;
+        font-size: 18px;
+        font-weight: 400;
+    }
+    &__header th {
+        padding: 18.5px 0;
+        vertical-align: middle;
+    }
+    &__header th:first-child {
+        border-radius: 10px 0 0 10px;
+        text-align: center;
+        padding-right: 15px;
+        width: 10%;
+    }
+    &__header th:last-child {
+        border-radius: 0 10px 10px 0;
+    }
+
+    input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        border: 2px solid #21bf48;
+        border-radius: 50%;
+        appearance: none;
+        box-sizing: border-box;
+        margin: 0;
+        position: relative;
+        cursor: pointer;
+    }
+    input[type="checkbox"]:checked {
+        background-color: #fff;
+    }
+    input[type="checkbox"]:checked::before {
+        content: "";
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background-color: #21bf48;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+    }
+
+    &__list {
+        margin-top: 25px;
+    }
+    &__none {
+        text-align: center;
+    }
+    &__none p:first-of-type {
+        margin-top: 200px;
+        font-weight: 700;
+        font-size: 18px;
+    }
+    &__none p:last-of-type {
+        font-weight: 400;
+        font-size: 14px;
+        margin-top: 17px;
+    }
+    &__item td {
+        border-top: #e0e0e0 2px solid;
+        border-bottom: #e0e0e0 2px solid;
+    }
+    &__checkbox-cell {
+        text-align: center;
+        vertical-align: middle;
+        border-left: #e0e0e0 2px solid;
+        border-radius: 10px 0 0 10px;
+        padding-right: 15px;
+    }
+    &__product-price-cell {
+        border-right: #e0e0e0 2px solid;
+        border-radius: 0 10px 10px 0;
+    }
+    &__product-cell img {
+        width: 160px;
+        padding: 20px 0;
+        float: left;
+        margin-right: 36px;
+
+        border-radius: 10px;
+    }
+    &__product-seller {
+        margin-top: 26px;
+        color: #767676;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 100%;
+        vertical-align: middle;
+    }
+    &__product-name {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+        vertical-align: middle;
+        margin-top: 10px;
+    }
+    &__product-price {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 100%;
+        vertical-align: middle;
+        margin-top: 10px;
+    }
+    &__delivery-info {
+        margin-top: 55px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 100%;
+        vertical-align: middle;
+        color: #767676;
+    }
+    &__product-quantity-cell {
+        vertical-align: middle;
+    }
+    &__quantity-container {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+    .quantity-modal__btn {
+        width: 50px;
+        height: 50px;
+        border: 1px solid #c4c4c4;
+    }
+    &__quantity--minus {
+        border-radius: 5px 0 0 5px;
+        background: url("../../assets/icons/icon-minus-line.svg") no-repeat 50%
+            50%;
+    }
+    &__quantity--plus {
+        border-radius: 0 5px 5px 0;
+        background: url("../../assets/icons/icon-plus-line.svg") no-repeat 50%
+            50%;
+    }
+    &__quantity {
+        width: 50px;
+        height: 50px;
+        border-top: 1px solid #c4c4c4;
+        border-bottom: 1px solid #c4c4c4;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &__product-price-cell {
+        vertical-align: middle;
+        text-align: center;
+        position: relative;
+    }
+    &__product-price-cell &__total-price {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 100%;
+        vertical-align: middle;
+        color: #eb5757;
+    }
+    &__payment-btn--single {
+        width: 130px;
+        height: 40px;
+        border-radius: 5px;
+        background-color: #21bf48;
+        color: #fff;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 100%;
+        vertical-align: middle;
+        margin-top: 26px;
+    }
+    &__delete-btn {
+        width: 22px;
+        height: 22px;
+        background-image: url("../../assets/icons/icon-delete.svg");
+        float: right;
+        position: absolute;
+        top: 18px;
+        right: 18px;
+    }
+
+    &__payment-info {
+        display: flex;
+        justify-content: space-around;
+
+        height: 150px;
+        margin-top: 80px;
+
+        background-color: #f2f2f2;
+        text-align: center;
+        border-radius: 10px;
+    }
+    &__symbol--minus {
+        width: 34px;
+        height: 34px;
+        background: url("../../assets/icons/icon-minus-line.svg") no-repeat #fff
+            50% 50%;
+        border-radius: 50%;
+        margin-top: 58px;
+    }
+    &__symbol--plus {
+        width: 34px;
+        height: 34px;
+        background: url("../../assets/icons/icon-plus-line.svg") no-repeat #fff
+            50% 50%;
+        border-radius: 50%;
+        margin-top: 58px;
+    }
+    &__payment-info div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 12px;
+    }
+    &__label {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 100%;
+    }
+    &__label--bold {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 100%;
+        text-align: center;
+        vertical-align: middle;
+    }
+    &__amount span {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 100%;
+    }
+    &__amount--final {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 100%;
+        vertical-align: middle;
+        color: #eb5757;
+    }
+    &__amount--final span {
+        font-size: 36px;
+        color: #eb5757;
+    }
+
+    &__payment-btn--multi {
+        width: 220px;
+        height: 68px;
+        border-radius: 5px;
+        background-color: #21bf48;
+        color: #fff;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 100%;
+        display: block;
+        margin: 40px auto 160px;
+    }
+
+    &__modal {
+        width: 360px;
+        height: 200px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        border: 1px solid #c4c4c4;
+        background-color: #fff;
+    }
+    &__modal--close {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        padding: 18px 18px 0 0;
+    }
+    &__modal--cancel {
+        background: url("../../assets/icons/icon-delete.svg") no-repeat;
+        width: 22px;
+        height: 22px;
+    }
+    &__quantity-modal--control {
+        display: flex;
+    }
+    &__modal-quantity {
+        width: 50px;
+        height: 50px;
+
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 100%;
+        vertical-align: middle;
+        text-align: center;
+
+        border: 1px solid #c4c4c4;
+    }
+    &__modal-quantity::-webkit-outer-spin-button,
+    &__modal-quantity::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    &__modal-quantity--minus {
+        width: 50px;
+        height: 50px;
+
+        border: 1px solid #c4c4c4;
+        border-right: none;
+        border-radius: 5px 0 0 5px;
+        background: url("../../assets/icons/icon-minus-line.svg") no-repeat 50%
+            50%;
+    }
+    &__modal-quantity--plus {
+        width: 50px;
+        height: 50px;
+
+        border: 1px solid #c4c4c4;
+        border-left: none;
+        border-radius: 0 5px 5px 0;
+        background: url("../../assets/icons/icon-plus-line.svg") no-repeat 50%
+            50%;
+    }
+    &__modal-quantity--cancel,
+    &__modal-delete--cancel {
+        width: 100px;
+        height: 40px;
+
+        color: #767676;
+        border: 1px solid #c4c4c4;
+        border-radius: 5px;
+    }
+    &__modal-btn-group {
+        margin-top: 26px;
+        display: flex;
+        gap: 10px;
+    }
+    &__modal-quantity--update,
+    &__modal-delete--update {
+        width: 100px;
+        height: 40px;
+
+        color: #fff;
+        background-color: #21bf48;
+        border-radius: 5px;
+    }
+    &__modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+
+        justify-content: center;
+        align-items: center;
+    }
+    &__modal-overlay.is-open {
+        display: flex;
+    }
+
+    &__delete-modal-text {
+        margin-top: 20px;
+    }
+}

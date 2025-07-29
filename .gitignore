@@ -1,0 +1,47 @@
+# 의존성 디렉토리
+/node_modules
+/.pnp
+.pnp.js
+
+# 빌드 결과물
+/dist
+/build
+/out
+/.next
+/.nuxt
+
+# Sass 캐시 파일
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
+
+# 로그 파일
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs
+*.log
+
+# 환경 변수 파일
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# 에디터 설정 파일
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# 테스트 커버리지 보고서
+/coverage
+
+# 임시 파일들
+.tmp
+.temp
+
+/src/assets/css/style.css

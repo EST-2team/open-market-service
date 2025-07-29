@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../assets/css/style.css" />
+        <title>상품 목록 페이지</title>
+    </head>
+    <body>
+        <header>
+            <nav class="nav-placeholder"></nav>
+        </header>
+
+        <main>
+            <section class="banner">
+                <h2 class="sr-only">상품에 대한 이벤트 배너</h2>
+                <button type="button" class="banner__prev-btn"></button>
+                <div class="banner-wrap">
+                    <div class="banner-slides">
+                        <div class="banner-slide" aria-label="1/5"></div>
+                        <div class="banner-slide" aria-label="2/5"></div>
+                        <div class="banner-slide" aria-label="3/5"></div>
+                        <div class="banner-slide" aria-label="4/5"></div>
+                        <div class="banner-slide" aria-label="5/5"></div>
+                    </div>
+                </div>
+                <button type="button" class="banner__next-btn"></button>
+
+                <ul class="banner-list">
+                    <li>
+                        <button
+                            class="banner-list__btn1"
+                            type="button"
+                            aria-label="1번 배너 보기"
+                        ></button>
+                    </li>
+                    <li>
+                        <button
+                            class="banner-list__btn"
+                            type="button"
+                            aria-label="2번 배너 보기"
+                        ></button>
+                    </li>
+                    <li>
+                        <button
+                            class="banner-list__btn"
+                            type="button"
+                            aria-label="3번 배너 보기"
+                        ></button>
+                    </li>
+                    <li>
+                        <button
+                            class="banner-list__btn"
+                            type="button"
+                            aria-label="4번 배너 보기"
+                        ></button>
+                    </li>
+                    <li>
+                        <button
+                            class="banner-list__btn"
+                            type="button"
+                            aria-label="5번 배너 보기"
+                        ></button>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="product">
+                <h2 class="sr-only">상품 목록</h2>
+                <ul class="product-list"></ul>
+            </section>
+        </main>
+
+        <footer class="footer"></footer>
+
+        <script
+            type="module"
+            src="../services/product-list/product-list-index.js"
+        ></script>
+        <script type="module" src="/src/services/nav/nav-loader.js"></script>
+        <script
+            type="module"
+            src="../services/footer/footer-loader.js"
+        ></script>
+    </body>
+</html>

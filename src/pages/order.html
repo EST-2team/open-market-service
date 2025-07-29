@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../assets/css/style.css" />
+        <title>주문/결제하기 - HODU</title>
+    </head>
+    <body>
+        <header>
+            <nav class="nav-placeholder"></nav>
+        </header>
+        <main class="order">
+            <h2 class="order__title">주문/결제하기</h2>
+
+            <section class="order__table-section">
+                <h3 class="sr-only">결제 예정 상품 목록</h3>
+                <table class="order__table">
+                    <thead class="order__header">
+                        <tr>
+                            <th scope="col">상품정보</th>
+                            <th scope="col">할인</th>
+                            <th scope="col">배송비</th>
+                            <th scope="col">주문금액</th>
+                        </tr>
+                    </thead>
+                    <tbody class="order__list">
+                        <tr></tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th class="sr-only" scope="row">합계</th>
+                            <td colspan="3">
+                                총 주문금액
+                                <span class="order__total-price">0원</span>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </section>
+            <section class="order__delivery-info">
+                <form class="order__form">
+                    <div>
+                        <h3>배송정보</h3>
+                        <div class="line md" aria-hidden="true"></div>
+                        <fieldset>
+                            <legend>주문자 정보</legend>
+                            <div class="line md" aria-hidden="true"></div>
+
+                            <div>
+                                <label class="user-name-label" for="name"
+                                    >이름</label
+                                >
+                                <input
+                                    id="name"
+                                    class="order__user-name"
+                                    type="text"
+                                    required
+                                />
+                            </div>
+                            <div class="line" aria-hidden="true"></div>
+                            <div class="order__mobile-section">
+                                <span id="user-phone-label">휴대폰</span>
+                                <div
+                                    role="group"
+                                    aria-labelledby="user-phone-label"
+                                >
+                                    <label
+                                        class="sr-only"
+                                        for="order__user-mobile1"
+                                        >앞자리</label
+                                    >
+                                    <input
+                                        id="order__user-mobile1"
+                                        type="tel"
+                                        maxlength="3"
+                                        required
+                                    />
+                                    <span class="dash" aria-hidden="true"
+                                        >-</span
+                                    >
+                                    <label
+                                        class="sr-only"
+                                        for="order__user-mobile2"
+                                        >중간자리</label
+                                    >
+                                    <input
+                                        id="order__user-mobile2"
+                                        type="tel"
+                                        maxlength="4"
+                                        required
+                                    />
+                                    <span class="dash" aria-hidden="true"
+                                        >-</span
+                                    >
+                                    <label
+                                        class="sr-only"
+                                        for="order__user-mobile3"
+                                        >끝자리</label
+                                    >
+                                    <input
+                                        id="order__user-mobile3"
+                                        type="tel"
+                                        maxlength="4"
+                                        required
+                                    />
+                                </div>
+                            </div>
+                            <div class="line" aria-hidden="true"></div>
+                            <div>
+                                <label class="user-email" for="email"
+                                    >이메일</label
+                                >
+                                <input id="email" type="email" required />
+                            </div>
+                            <div class="line" aria-hidden="true"></div>
+                        </fieldset>
+
+                        <fieldset class="recipient__delivery-info">
+                            <legend>배송지 정보</legend>
+                            <div class="line md" aria-hidden="true"></div>
+                            <div>
+                                <label
+                                    class="recipient-name-label"
+                                    for="recipient-name"
+                                    >수령인</label
+                                >
+                                <input
+                                    id="recipient-name"
+                                    type="text"
+                                    required
+                                />
+                            </div>
+                            <div class="line" aria-hidden="true"></div>
+                            <div class="recipient-mobile-section">
+                                <span id="recipient-phone-label">휴대폰</span>
+                                <div
+                                    role="group"
+                                    aria-labelledby="recipient-phone-label"
+                                >
+                                    <label
+                                        class="sr-only"
+                                        for="order__recipient-mobile1"
+                                        >앞자리</label
+                                    >
+                                    <input
+                                        id="order__recipient-mobile1"
+                                        type="tel"
+                                        maxlength="3"
+                                        required
+                                    />
+                                    <span aria-hidden="true">-</span>
+                                    <label
+                                        class="sr-only"
+                                        for="order__recipient-mobile2"
+                                        >중간자리</label
+                                    >
+                                    <input
+                                        id="order__recipient-mobile2"
+                                        type="tel"
+                                        maxlength="4"
+                                        required
+                                    />
+                                    <span aria-hidden="true">-</span>
+                                    <label
+                                        class="sr-only"
+                                        for="order__recipient-mobile3"
+                                        >끝자리</label
+                                    >
+                                    <input
+                                        id="order__recipient-mobile3"
+                                        type="tel"
+                                        maxlength="4"
+                                        required
+                                    />
+                                </div>
+                            </div>
+                            <div class="line" aria-hidden="true"></div>
+                            <div class="recipient-address-wrapper">
+                                <span id="recipient-address">배송지 주소</span>
+                                <div
+                                    class="recipient-address-info"
+                                    role="group"
+                                    aria-labelledby="recipient-address"
+                                >
+                                    <div>
+                                        <label class="sr-only" for="zipcode"
+                                            >우편번호</label
+                                        >
+                                        <input
+                                            id="zipcode"
+                                            type="text"
+                                            required
+                                            readonly
+                                        />
+                                        <button
+                                            class="address-search-btn"
+                                            type="button"
+                                        >
+                                            우편번호 조회
+                                        </button>
+                                    </div>
+
+                                    <label class="sr-only" for="address"
+                                        >주소</label
+                                    >
+                                    <input
+                                        id="address"
+                                        type="text"
+                                        required
+                                        readonly
+                                    />
+                                    <label class="sr-only" for="address-detail"
+                                        >상세주소</label
+                                    >
+                                    <input
+                                        id="address-detail"
+                                        type="text"
+                                        required
+                                    />
+                                </div>
+                            </div>
+                            <div class="line" aria-hidden="true"></div>
+                            <div>
+                                <label
+                                    class="delivery-msg-label"
+                                    for="delivery-msg"
+                                    >배송 메시지</label
+                                >
+                                <input id="delivery-msg" type="text" />
+                            </div>
+                            <div class="line" aria-hidden="true"></div>
+                        </fieldset>
+                    </div>
+                    <div class="order__payment-wrapper">
+                        <div class="order__checkbox-group">
+                            <h3>결제수단</h3>
+                            <fieldset class="order__payment-method-wrapper">
+                                <legend class="sr-only">결제 방법 선택</legend>
+                                <div class="line md" aria-hidden="true"></div>
+                                <input
+                                    id="card"
+                                    name="order__payment-method"
+                                    type="radio"
+                                    value="card"
+                                    checked
+                                />
+                                <label for="card">신용/체크카드</label>
+                                <input
+                                    id="deposit"
+                                    name="order__payment-method"
+                                    type="radio"
+                                    value="deposit"
+                                />
+                                <label for="deposit">무통장 입금</label>
+                                <input
+                                    id="mobile-payment"
+                                    name="order__payment-method"
+                                    type="radio"
+                                    value="phone"
+                                />
+                                <label for="mobile-payment">휴대폰 결제</label>
+                                <input
+                                    id="naver-pay"
+                                    name="order__payment-method"
+                                    type="radio"
+                                    value="naverpay"
+                                />
+                                <label for="naver-pay">네이버페이</label>
+                                <input
+                                    id="kakao-pay"
+                                    name="order__payment-method"
+                                    type="radio"
+                                    value="kakaopay"
+                                />
+                                <label for="kakao-pay">카카오페이</label>
+                                <div class="line md" aria-hidden="true"></div>
+                            </fieldset>
+                        </div>
+
+                        <div class="final-payment-info">
+                            <h3>최종결제 정보</h3>
+                            <div class="final-payment-info-box">
+                                <dl>
+                                    <div>
+                                        <dt>상품금액</dt>
+                                        <dd>
+                                            <span
+                                                class="order__total-product-price"
+                                                >0</span
+                                            >
+                                            원
+                                        </dd>
+                                    </div>
+                                    <div>
+                                        <dt>할인금액</dt>
+                                        <dd><span>0</span> 원</dd>
+                                    </div>
+                                    <div>
+                                        <dt>배송비</dt>
+                                        <dd>
+                                            <span
+                                                class="order__total-shipping-fee"
+                                                >0</span
+                                            >
+                                            원
+                                        </dd>
+                                    </div>
+                                    <div class="line" aria-hidden="true">
+                                        <dt class="sr-only"></dt>
+                                        <dd class="sr-only"></dd>
+                                    </div>
+                                    <div>
+                                        <dt class="order__final-amount-dt">
+                                            결제금액
+                                        </dt>
+                                        <dd class="order__final-amount-dd">
+                                            46,500 원
+                                        </dd>
+                                    </div>
+                                </dl>
+                                <div class="order__final-box--bg">
+                                    <div>
+                                        <input id="agree" type="checkbox" />
+                                        <label for="agree"
+                                            >주문 내용을 확인하였으며, 정보 제공
+                                            등에 동의합니다.</label
+                                        >
+                                    </div>
+                                    <button
+                                        class="order__payment-btn"
+                                        type="submit"
+                                    >
+                                        결제하기
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </main>
+
+        <footer class="footer"></footer>
+
+        <script type="module" src="../services/order/order-index.js"></script>
+        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+        <script type="module" src="/src/services/nav/nav-loader.js"></script>
+        <script
+            type="module"
+            src="../services/footer/footer-loader.js"
+        ></script>
+    </body>
+</html>

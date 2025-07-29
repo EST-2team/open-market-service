@@ -1,0 +1,51 @@
+.footer {
+    width: 100%;
+
+    font-size: 14px;
+    line-height: 100%;
+
+    background-color: #f2f2f2;
+    padding-top: 54px;
+
+    & div {
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+    &__link-list {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__link {
+        display: flex;
+        font-weight: 400;
+    }
+    &__link li:not(:last-child)::after {
+        content: "|";
+        margin: 0 14px;
+    }
+    &__sns {
+        display: flex;
+        gap: 14px;
+    }
+    .line {
+        height: 1px;
+        background-color: #c4c4c4;
+        margin-top: 22px;
+    }
+    &__company-info {
+        color: #767676;
+        margin-top: 30px;
+        padding-bottom: 54px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 24px;
+    }
+    &__company-info strong {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 24px;
+    }
+}

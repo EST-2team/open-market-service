@@ -1,0 +1,33 @@
+const $productList = document.querySelector(".product-list");
+
+function renderProduct(products) {
+    $productList.innerHTML = "";
+    products.forEach((product) => {
+        const li = document.createElement("li");
+
+        li.classList.add("product-item");
+        li.setAttribute("id", `${product.id}`);
+        li.setAttribute("aria-label", `상품 상세보기`);
+
+        li.innerHTML = `
+           <img class="product-item__img" src="${product.image}" alt="${product.info}" />       
+            <p class="product-item__seller" aria-label="판매점">
+                ${product.seller.store_name}
+            </p>
+            <h3 class="product-item__info" aria-label="제품명">
+                ${product.info}
+            </h3>
+            <p class="product-item__price" aria-label="가격">
+                <span class="product-item__price--num">${product.price.toLocaleString()}</span>원
+            </p>
+        `;
+
+        $productList.appendChild(li);
+
+        li.addEventListener("click", () => {
+            location.href = `./product-details.html?id=${product.id}`;
+        });
+    });
+}
+
+export { renderProduct };

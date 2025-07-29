@@ -1,0 +1,134 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Spoqa Han Sans Neo", sans-serif;
+
+    header img {
+        width: 238px;
+        height: 74px;
+
+        margin-top: 100px;
+    }
+
+    .login-container {
+        position: relative;
+    }
+    .login-tab {
+        display: flex;
+        background-color: #ffffff;
+    }
+    .tab-btn {
+        border: 1px solid #c4c4c4;
+        width: 275px;
+        height: 80px;
+
+        border-radius: 10px 10px 0 0;
+        border-bottom: none;
+
+        padding-bottom: 9px;
+
+        background-color: #f2f2f2;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        text-align: center;
+        vertical-align: middle;
+
+        position: absolute;
+        top: 65px;
+        z-index: 100;
+    }
+    .tab-btn:last-of-type {
+        left: 275px;
+    }
+    .tab-btn:first-of-type.active {
+        z-index: 300;
+        background-color: #ffffff;
+        border-right: none;
+    }
+    .tab-btn:last-of-type.active {
+        z-index: 300;
+        background-color: #ffffff;
+        border-left: none;
+    }
+
+    .login-form {
+        width: 550px;
+
+        border-radius: 10px 10px 10px 10px;
+        border: 1px solid #c4c4c4;
+
+        margin-top: 130px;
+        padding-bottom: 36px;
+        background-color: #ffffff;
+
+        position: relative;
+        z-index: 200;
+    }
+    fieldset {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    input {
+        width: 480px;
+        height: 60px;
+        border: none;
+    }
+    input::placeholder {
+        color: #767676;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 100%;
+        vertical-align: middle;
+    }
+    input:first-of-type {
+        margin-top: 34px;
+        border-bottom: 1px solid #c4c4c4;
+    }
+    input:last-of-type {
+        margin-top: 8px;
+        border-bottom: 1px solid #c4c4c4;
+    }
+
+    button[type="submit"] {
+        width: 480px;
+        height: 60px;
+
+        margin-top: 36px;
+        border-radius: 5px;
+
+        background: #21bf48;
+        color: #fff;
+
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 22px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .login-links {
+        margin-top: 30px;
+        text-align: center;
+        color: #333333;
+    }
+    .login-links a:first-of-type::after {
+        content: "|";
+        margin: 0 14px;
+    }
+
+    .login-error {
+        align-self: start;
+        margin: 26px 0 0 35px;
+        color: #eb5757;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 100%;
+        vertical-align: middle;
+    }
+}
