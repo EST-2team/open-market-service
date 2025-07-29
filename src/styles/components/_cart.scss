@@ -13,7 +13,7 @@ body {
     font-family: "Spoqa Han Sans Neo", sans-serif;
 
     &__title {
-        margin-top: 54px;
+        margin-top: calc(54px + 92px);
 
         text-align: center;
         font-size: 36px;
