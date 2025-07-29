@@ -8,7 +8,6 @@ function renderProduct(products) {
         li.classList.add("product-item");
         li.setAttribute("id", `${product.id}`);
         li.setAttribute("aria-label", `상품 상세보기`);
-        // li.style.cursor = "pointer"; // css로 구현 예정
 
         li.innerHTML = `
            <img class="product-item__img" src="${product.image}" alt="${product.info}" />       

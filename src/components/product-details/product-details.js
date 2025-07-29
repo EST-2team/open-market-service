@@ -120,8 +120,10 @@ function plusBtnDisabled() {
 // 수량 표시 업데이트 함수
 function updateQuantity() {
     const $quantity = document.querySelector(".product-quantity__total");
-    const $totalQuantity = document.querySelector(".total__quantity");
-    const $totalAmount = document.querySelector(".total__amount--strong");
+    const $totalQuantity = document.querySelector(".product-total__quantity");
+    const $totalAmount = document.querySelector(
+        ".product-total__amount--strong"
+    );
 
     if ($quantity && $totalQuantity && $totalAmount && currentProduct) {
         $quantity.textContent = productQuantity;
