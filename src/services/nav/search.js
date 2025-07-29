@@ -37,22 +37,25 @@ export function initSearch() {
           <p>${product.info}</p>
           <p>가격: ${product.price.toLocaleString()}원</p>
           <p>배송 방법: ${product.shipping_method}</p>
-          <img src="${product.image}" alt="${product.name}" width="150" />
+          <img src="${product.image}" alt="${product.name}" />
         </li>
       `
                 )
                 .join("");
+            searchInput.value = "";
         } catch (error) {
             productList.innerHTML = `<li>오류 발생: ${error.message}</li>`;
         }
     }
 
-    searchBtn.addEventListener("click", () => {
+    searchBtn.addEventListener("click", (e) => {
+        e.preventDefault();
         searchProducts(searchInput.value);
     });
 
     searchInput.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
+            e.preventDefault();
             searchProducts(searchInput.value);
         }
     });
