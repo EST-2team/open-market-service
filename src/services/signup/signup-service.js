@@ -63,6 +63,7 @@ export function validateUsernameInput() {
     checkMsg.textContent = "";
     return true;
 }
+
 export function validateName() {
     const nameInput = document.querySelector("#name");
     const nameMsg = document.querySelector("#name-msg");
@@ -76,6 +77,7 @@ export function validateName() {
     nameMsg.textContent = "";
     return true;
 }
+
 export function validatePassword() {
     const passwordInput = document.querySelector("#password");
     const passwordMsg = document.querySelector("#password-msg");
@@ -139,6 +141,7 @@ export function passwordMatch() {
     }
     return true;
 }
+
 export function phoneNumberMatch() {
     const midPhoneNum = document.querySelector("#mobile2");
     const lastPhoneNum = document.querySelector("#mobile3");
@@ -184,15 +187,81 @@ export function agreeCheck() {
     if (agreeMsg) agreeMsg.textContent = "";
     return true;
 }
+
 export function setupFormValidation() {
     const signupForm = document.querySelector("#signup-form");
     const usernameInput = document.querySelector("#username");
     const passwordCheck = document.querySelector("#passwordCheck");
+    const passwordInput = document.querySelector("#password");
+    const nameInput = document.querySelector("#name");
+    const mobile2Input = document.querySelector("#mobile2");
+    const mobile3Input = document.querySelector("#mobile3");
+    const agreeCheckbox = document.querySelector("#agree");
+    const submitButton = document.querySelector(".signup-form__submit-button");
 
     // 포커스 잃으면 검증
     usernameInput.addEventListener("blur", validateUsernameInput);
     passwordCheck.addEventListener("blur", passwordMatch);
+    passwordInput.addEventListener("blur", validatePassword);
 
+    // 모든 유효성을 검사하는 함수
+    function checkAllValid() {
+        return (
+            validateUsernameInput() &&
+            validateName() &&
+            validatePassword() &&
+            passwordMatch() &&
+            phoneNumberMatch() &&
+            agreeCheck()
+        );
+    }
+
+    // 버튼 활성화 토글 함수
+    function toggleSubmitButton() {
+        if (checkAllValid()) {
+            submitButton.disabled = false;
+            submitButton.classList.add("active");
+        } else {
+            submitButton.disabled = true;
+            submitButton.classList.remove("active");
+        }
+    }
+
+    // 각 input/change 이벤트에 유효성 검사 및 버튼 상태 토글 추가
+    usernameInput.addEventListener("input", () => {
+        validateUsernameInput();
+        toggleSubmitButton();
+    });
+    nameInput.addEventListener("input", () => {
+        validateName();
+        toggleSubmitButton();
+    });
+    passwordInput.addEventListener("input", () => {
+        validatePassword();
+        passwordMatch();
+        toggleSubmitButton();
+    });
+    passwordCheck.addEventListener("input", () => {
+        passwordMatch();
+        toggleSubmitButton();
+    });
+    mobile2Input.addEventListener("input", () => {
+        phoneNumberMatch();
+        toggleSubmitButton();
+    });
+    mobile3Input.addEventListener("input", () => {
+        phoneNumberMatch();
+        toggleSubmitButton();
+    });
+    agreeCheckbox.addEventListener("change", () => {
+        agreeCheck();
+        toggleSubmitButton();
+    });
+
+    // 초기 버튼 상태 설정
+    toggleSubmitButton();
+
+    // 폼 제출 이벤트
     signupForm.addEventListener("submit", async (e) => {
         e.preventDefault();
 
@@ -215,13 +284,13 @@ export function setupFormValidation() {
         )
             return;
 
-        const username = document.querySelector("#username").value.trim();
-        const password = document.querySelector("#password").value;
-        const name = document.querySelector("#name").value.trim();
+        const username = usernameInput.value.trim();
+        const password = passwordInput.value;
+        const name = nameInput.value.trim();
         const phone_number =
             document.querySelector("#mobile1").value.trim() +
-            document.querySelector("#mobile2").value.trim() +
-            document.querySelector("#mobile3").value.trim();
+            mobile2Input.value.trim() +
+            mobile3Input.value.trim();
 
         // 서버 에러 메시지 초기화
         document.querySelector("#userid-check-msg").textContent = "";
