@@ -22,6 +22,7 @@ async function loadProductDetail() {
         renderProductDetail(product);
         quantityBtnEventListener();
         cartBtnEventListener();
+        buyBtnEventListener();
     } else {
         alert("상품 정보를 불러올 수 없습니다.");
     }
@@ -138,6 +139,17 @@ function soldOut() {
     const $soldOut = document.querySelector(".sold-out");
     $buyOrCart.style.display = "none";
     $soldOut.style.display = "block";
+}
+function buyBtnEventListener() {
+    const $buyBtn = document.querySelector(".buy-btn");
+
+    if ($buyBtn) {
+        $buyBtn.addEventListener("click", directOrder);
+    }
+}
+function directOrder() {
+    const orderPageUrl = `../pages/order.html?order_type=direct_order&product=${productId}&quantity=${productQuantity}`;
+    window.location.href = orderPageUrl;
 }
 
 // 장바구니 클릭 이벤트
