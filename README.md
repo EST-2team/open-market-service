@@ -46,8 +46,36 @@
 
 #### 💬 커밋 컨벤션
    #### 🌿 브랜치 전략 (GitHub Flow)
-   - **feature/기능명**: 기능 개발
-   - **fix/버그명**: 버그 수정
+   - **main** (배포용), **dev** (개발용), **feature/기능명** (기능별) 구조로 브랜치를 나누어 관리
+   - 버그 수정 시: **fix/버그명**
+
+### 🔁 협업 PR (Pull Request) 워크플로우
+1. **브랜치별 개발**: 각자 feature 브랜치에서 작업 후 PR 생성
+2. **PR 생성** - wiki의 pr 템플릿 사용
+3. **PR 코드 리뷰 및 승인**: 최소1명 이상의 팀원 승인 필요
+4. **merge**: 피드백 반영 후 merge
+5. **최종 merge 후 배포**: 모든 구현 완료 후 dev 브랜치에서 main 브랜치로 merge
+
+### 📁 프로젝트 폴더 구조
+```
+📦src
+ ┣ 📂assets            // 이미지, 아이콘, 폰트 등
+ ┃ ┣ 📂css
+ ┃ ┃ ┣ 📜style.css     // 최종 css
+ ┃ ┣ 📂fonts           // 폰트
+ ┃ ┣ 📂icons           // 이미지, 아이콘
+ ┣ 📂components        // JavaScript UI 컴포넌트
+ ┣ 📂pages             // 각 페이지별 HTML
+ ┣ 📂services          // API 호출 모듈 + 서비스 로직
+ ┣ 📂styles            // Sass 스타일 관련
+ ┃ ┣ 📂base            // 초기 세팅, 글꼴, 리셋 스타일 등
+ ┃ ┣ 📂components      // UI 컴포넌트
+ ┃ ┣ 📜style.css.map
+ ┃ ┗ 📜style.scss
+ ┗ 📂utils             // 공통 유틸 함수
+📜index.html           // 메인 HTML
+
+```
 
 ***
 
@@ -135,27 +163,3 @@
   - 피그마 그대로 구현
   
 ### 🌟 주요기능
-### 📁 프로젝트 폴더 구조
-```
-📦src
- ┣ 📂assets            // 이미지, 아이콘, 폰트 등
- ┃ ┣ 📂css
- ┃ ┃ ┣ 📜style.css     // 최종 css
- ┃ ┣ 📂fonts           // 폰트
- ┃ ┣ 📂icons           // 이미지, 아이콘
- ┣ 📂components        // JavaScript UI 컴포넌트
- ┣ 📂pages             // 각 페이지별 HTML
- ┣ 📂services          // API 호출 모듈 + 서비스 로직
- ┣ 📂styles            // Sass 스타일 관련
- ┃ ┣ 📂base            // 초기 세팅, 글꼴, 리셋 스타일 등
- ┃ ┣ 📂components      // UI 컴포넌트
- ┃ ┣ 📜style.css.map
- ┃ ┗ 📜style.scss
- ┗ 📂utils             // 공통 유틸 함수
-📜index.html           // 메인 HTML
-
-```
-### 🔁 PR (Pull Request) 프로세스
-1. **pr 생성** - wiki의 pr 템플릿 사용
-2. **pr 코드 리뷰 및 승인**: 최소1명 이상의 팀원 승인 필요
-3. **merge**: 피드백 반영 후 merge
