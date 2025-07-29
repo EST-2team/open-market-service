@@ -79,49 +79,64 @@ export function validateName() {
 export function validatePassword() {
     const passwordInput = document.querySelector("#password");
     const passwordMsg = document.querySelector("#password-msg");
+    const passwordIcon = document.querySelector(".signup-form__input-icon");
 
+    let isValid = true;
     const password = passwordInput.value;
     if (password.length < 8) {
         passwordMsg.textContent = "비밀번호는 8자 이상이어야 합니다.";
         passwordMsg.style.color = "red";
-        return false;
-    }
-
-    if (!/[a-z]/.test(password)) {
+        isValid = false;
+    } else if (!/[a-zA-Z]/.test(password)) {
         passwordMsg.textContent =
             "비밀번호는 한 개 이상의 영소문자를 포함해야 합니다.";
         passwordMsg.style.color = "red";
-        return false;
-    }
-
-    if (!/[0-9]/.test(password)) {
+        isValid = false;
+    } else if (!/[0-9]/.test(password)) {
         passwordMsg.textContent =
             "비밀번호는 한 개 이상의 숫자를 포함해야 합니다.";
         passwordMsg.style.color = "red";
-        return false;
+        isValid = false;
+    } else {
+        passwordMsg.textContent = "";
+        isValid = true;
     }
-
-    passwordMsg.textContent = "";
-    return true;
+    if (isValid) {
+        passwordIcon.src = "/src/assets/icons/icon-check-on.svg";
+    } else {
+        passwordIcon.src = "/src/assets/icons/icon-check-off.svg";
+    }
+    return isValid;
 }
+
 export function passwordMatch() {
     const password = document.querySelector("#password").value;
     const passwordCheck = document.querySelector("#passwordCheck").value;
     const passwordCheckMsg = document.querySelector("#passwordCheck-msg");
+    const passwordCheckIcon = document.querySelector(".password-check-icon");
 
     if (!passwordCheck) {
         passwordCheckMsg.textContent = "";
+        if (passwordCheckIcon) {
+            passwordCheckIcon.src = "/src/assets/icons/icon-check-off.svg";
+        }
         return false;
     }
 
     if (password !== passwordCheck) {
         passwordCheckMsg.textContent = "비밀번호가 일치하지 않습니다.";
         passwordCheckMsg.style.color = "red";
+        if (passwordCheckIcon) {
+            passwordCheckIcon.src = "/src/assets/icons/icon-check-off.svg";
+        }
         return false;
     }
 
     passwordCheckMsg.textContent = "비밀번호가 일치합니다.";
     passwordCheckMsg.style.color = "#21BF48";
+    if (passwordCheckIcon) {
+        passwordCheckIcon.src = "/src/assets/icons/icon-check-on.svg"; // 성공 아이콘
+    }
     return true;
 }
 export function phoneNumberMatch() {
@@ -172,12 +187,10 @@ export function agreeCheck() {
 export function setupFormValidation() {
     const signupForm = document.querySelector("#signup-form");
     const usernameInput = document.querySelector("#username");
-    const passwordInput = document.querySelector("#password");
     const passwordCheck = document.querySelector("#passwordCheck");
 
     // 포커스 잃으면 검증
     usernameInput.addEventListener("blur", validateUsernameInput);
-    passwordInput.addEventListener("blur", validatePassword);
     passwordCheck.addEventListener("blur", passwordMatch);
 
     signupForm.addEventListener("submit", async (e) => {
