@@ -57,12 +57,12 @@
 
     .login-form {
         width: 550px;
-        height: 292px;
 
         border-radius: 10px 10px 10px 10px;
         border: 1px solid #c4c4c4;
 
         margin-top: 130px;
+        padding-bottom: 36px;
         background-color: #ffffff;
 
         position: relative;
@@ -120,5 +120,15 @@
     .login-links a:first-of-type::after {
         content: "|";
         margin: 0 14px;
+    }
+
+    .login-error {
+        align-self: start;
+        margin: 26px 0 0 35px;
+        color: #eb5757;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 100%;
+        vertical-align: middle;
     }
 }
