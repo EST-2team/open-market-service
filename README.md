@@ -26,6 +26,9 @@
 - **BEM 방법론** (Block, Element, Modifier)
 - 모든 파일 들여쓰기: **4**칸
 - 접근성을 고려한 태그 사용, 적절한 대체 텍스트 제공, w3c 웹 표준 검사 완료
+- 오픈 그래프 프로토콜 구현
+ <img width="548" height="164" alt="image" src="https://github.com/user-attachments/assets/b563b13a-6db2-40fd-a4b9-3a01a7f8bafa" />
+
 
 #### 💻 코드 컨벤션
    ####  HTML
@@ -170,3 +173,88 @@
   - 피그마 그대로 구현
   
 ### 4-7. 주요기능
+
+#### 회원 가입 페이지 주요 기능 및 코드
+
+**주요 기능**
+- 사용자 입력 검증
+- 폼 제출 제어
+**구현 방법**
+- 아이디 정규식 검사
+- 비밀번호 조건 및 일치 검사
+- 가입하기 버튼 제어 - 기본적으로 disabled, 모든 검사 통과하면 active로 변경
+**문제 해결**
+- 조건 만족 했는데 버튼 비활성화 - addEventListener로 상태 갱신
+- 서버 응답에 따라 필드에 에러 메세지 파싱해서 출력
+<img width="566" height="525" alt="image" src="https://github.com/user-attachments/assets/9aaf3f1c-7333-495b-81ae-317144dc523a" />
+
+#### 로그인 페이지 주요 기능 및 코드
+
+**주요 기능**
+- 사용자 로그인 처리: API로 요청을 보내고 성공시 인증 토큰 및 정보 저장
+- 로그인 후 페이지 이동: 로그인 성공 시 이전 페이지나 메인 페이지로 이동
+**구현 방법**
+- response.ok가 true이면 access,refresh 토큰과 userInfo를 로컬 스토리지에 저장
+- document.referrer를 이용해 로그인 요청 전 머물렀던 페이지로 이동 - 만약 referrer이 로그인 페이지면 메인 페이지로 이동
+**문제 해결**
+- try catch로 네트워크 지연이나 API 응답 대응
+- 로그인 전 머물렀던 페이지로 이동시켜 사용자의 흐름을 끊지않는 UX 제공
+<img width="498" height="446" alt="image" src="https://github.com/user-attachments/assets/59df0619-d0d3-4b8c-8f82-1aa0c98dc649" />
+
+#### 상품 목록 페이지 주요 기능 및 코드
+
+**주요 기능**
+-전체 상품을 서버에서 가져와 렌더링 구현하는 기능으로 서버와 api 통신 하는 부분
+**구현 방법**
+- 전제척인 흐름: 서버 api 호출 => 데이터 전역 변수에 저장 => 렌더링 함수에 변수 전달
+1. API 주소 설정 → marketProductsUrl
+2. 비동기 요청 → fetch()로 상품 데이터 요청
+3.에러 검사 → 응답 상태 코드 확인
+4. JSON 파싱 → res.json()으로 데이터 구조화
+5. 데이터 저장 및 반환 → productData에 저장하고 반환
+6. 예외 처리 → 실패 시 console.log()와 alert() 실행,null 반환
+7. 모듈화 → 외부의 렌더링 해주는 함수에 변수 전달할 수 있도록 export
+**문제해결**
+- 문제: 전체 상품을 가져오는 요청을 어떻게 할 것인지
+- 해결:  GET메서드 사용, 비동기 fetch함수 사용, 해당  api 주소로 상품 데이터 요청
+<img width="474" height="463" alt="image" src="https://github.com/user-attachments/assets/3741e370-47e0-4189-94b1-e1d0bf09834e" />
+
+#### 상품 상세 페이지 주요 기능 및 코드
+**주요 기능**
+- 사용자가 선택한 상품의 id에 해당하는 상품 불러오기
+**구현 방법**
+1. 상품 목록에서 상품 클릭 시 URL에 해당 ID 값 저장
+2. URL을 객체에 저장 후 id 값만 가져와 변수에 저장
+3. fetchProductById에 변수로 id값 넘겨줌→ API 호출로 해당 상품 상세 데이터 요청
+4. 성공 시 렌더링 → renderProductDetail()으로 화면 구성
+5. 실패 시 알림 → 상품이 없거나 오류 발생 시 사용자에게 alert 표시
+**문제해결**
+- 문제: 해당 id 값을 어떻게 전달할 것인지
+- 해결: URL에 저장 후 전달
+<img width="445" height="70" alt="image" src="https://github.com/user-attachments/assets/53096eed-b510-48fa-a268-06a409332e24" />
+<img width="566" height="505" alt="image" src="https://github.com/user-attachments/assets/1dcd404d-7204-44a6-95df-bf23b6313f13" />
+
+#### 장바구니 페이지 주요 기능 및 코드
+**주요 기능**
+- 실시간 상호작용을 통한 장바구니 상태 관리
+**구현 방법**
+- cartData라는 중앙 상태 저장소를 만듦
+- UI의 어떤 부분(장바구니 목록, 모달창 등)이든 이 상태를 조회하고, 상태에 기반하여 동작하도록 구현
+**문제해결**
+- 문제: 다수의 동적 상품에 대한 이벤트를 어떻게 효율적으로 관리할 것인가?,
+- 해결: 
+- 이벤트 위임과 데이터 속성을 활용하였습니다.
+- 이벤트 발생 시 e.target을 확인하여 실제 클릭된 요소를 찾고,  요소에 미리 부여한 data-item-id 속성을 읽어 어떤 상품에 대한 요청인지 식별하였습니다.
+- 이 방식을 통해 메모리 사용량을 줄여 성능을 최적화하였습니다.
+<img width="484" height="292" alt="image" src="https://github.com/user-attachments/assets/9b64998d-7f42-4bad-b3d3-a104801f0dd9" />
+
+#### 결제/주문하기 페이지 주요기능 및 코드
+**주요 기능**
+- 클라이언트의 두 가지 다른 구매 의도를 분기처리 하는것
+**구현 방법**
+- 특정 상품 하나만 바로 주문하는 경우와 여러 상품을 장바구니에 담아 주문하는 경우를 쿼리스트링으로 구분하였고,  서버에 전달할 데이터 형식을 분기처리하여 전달하였습니다.
+**문제해결**
+- 문제: 어떻게 하면 결제 페이지가 '바로 구매'와 '장바구니 구매'라는 두 가지 다른 경로로부터 일관된 방식으로 주문 상품 데이터를 전달받을 수 있는가?
+- 해결: 쿼리스트링을 이용하였으며 쿼리스트링으로 전달 할 정보가 민감정보는 아니기에 쿼리스트링 방식을 이용했습니다.
+- <img width="457" height="254" alt="image" src="https://github.com/user-attachments/assets/c7e645cc-3e17-406a-9914-56a922f96135" />
+
