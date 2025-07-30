@@ -3,8 +3,35 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>상품 상세 페이지</title>
+
+        <!--JS로 상품에 맞게 새로 넣어주게 코드 추가했음-->
+        <meta
+            name="description"
+            content="[상품에 대한 간략한 요약 설명. 검색 결과에 노출됩니다.]"
+        />
+        <meta
+            name="keywords"
+            content="[상품명], [카테고리], [브랜드명], HODU"
+        />
+
+        <meta property="og:type" content="product" />
+        <meta property="og:title" content="[상품명] - HODU" />
+        <meta
+            property="og:description"
+            content="[상품에 대한 간략한 요약 설명]"
+        />
+        <meta property="og:image" content="[대표 상품 이미지 URL]" />
+        <meta property="og:url" content="[현재 상품의 대표 URL]" />
+
+        <link rel="canonical" href="[현재 상품의 대표 URL]" />
+        <link
+            rel="icon"
+            type="image/png"
+            href="../assets/icons/Logo-hodu.png"
+        />
         <link rel="stylesheet" href="../assets/css/style.css" />
+
+        <title>[상품명] - HODU</title>
     </head>
     <body>
         <header>
@@ -17,7 +44,7 @@
                 <div class="product-details__img"></div>
                 <div class="product-details__constents">
                     <div class="product-details__constents-info"></div>
-                    <div class="product-total"></div>
+                    <div class="product-total" aria-live="polite"></div>
                     <div class="buy-or-cart">
                         <button class="buy-btn" type="button">바로 구매</button>
                         <button class="cart-btn" type="button">장바구니</button>

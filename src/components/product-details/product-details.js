@@ -19,6 +19,7 @@ async function loadProductDetail() {
     const product = await fetchProductById(productId);
     if (product) {
         currentProduct = product;
+        updateProductMeta(product);
         renderProductDetail(product);
         quantityBtnEventListener();
         cartBtnEventListener();
@@ -26,6 +27,43 @@ async function loadProductDetail() {
     } else {
         alert("상품 정보를 불러올 수 없습니다.");
     }
+}
+
+function updateProductMeta(product) {
+    const productUrl = `https://gimeast.com/src/pages/product-details/?id=${productId}`;
+    const siteName = "HODU";
+    const brandName = product.seller.store_name || siteName;
+
+    document.title = `${product.info} - ${siteName}`;
+    document
+        .querySelector('meta[name="description"]')
+        .setAttribute(
+            "content",
+            `${product.info}의 상세 정보 및 가격을 확인하세요.`
+        );
+    document
+        .querySelector('meta[name="keywords"]')
+        .setAttribute(
+            "content",
+            `${product.info}, ${brandName}, 쇼핑, ${siteName}`
+        );
+
+    document
+        .querySelector('meta[property="og:title"]')
+        .setAttribute("content", `${product.info} - ${siteName}`);
+    document
+        .querySelector('meta[property="og:description"]')
+        .setAttribute("content", `HODU에서 ${product.info}을(를) 만나보세요.`);
+    document
+        .querySelector('meta[property="og:image"]')
+        .setAttribute("content", product.image);
+    document
+        .querySelector('meta[property="og:url"]')
+        .setAttribute("content", productUrl);
+
+    document
+        .querySelector('link[rel="canonical"]')
+        .setAttribute("href", productUrl);
 }
 
 // 해당 상품 정보 렌더 함수
