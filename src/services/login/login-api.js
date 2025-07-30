@@ -26,9 +26,14 @@ export const login = async ({ username, password }) => {
         localStorage.setItem("refreshToken", refresh);
         localStorage.setItem("userInfo", JSON.stringify(user));
 
-        // 로그인 성공시 아이템리스트 페이지로 이동 (임시-수정가능)
-        // replace 사용하면 뒤로가기 불가능
-        location.replace("../../pages/product-list.html");
+        const previousPage = document.referrer;
+
+        if (previousPage && !previousPage.includes("login.html")) {
+            window.location.href = previousPage;
+        } else {
+            // 만약 이전 페이지 정보가 없거나 로그인 페이지였다면 기본 페이지로
+            window.location.href = "/index.html";
+        }
     } catch (err) {
         console.error("네트워크 오류:", err);
     }
