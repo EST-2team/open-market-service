@@ -1,3 +1,5 @@
+let refreshTokenMemory = null;
+
 export const login = async ({ username, password }) => {
     try {
         const response = await fetch(
@@ -23,8 +25,9 @@ export const login = async ({ username, password }) => {
 
         // 로컬스토리지 토큰 저장
         localStorage.setItem("accessToken", access);
-        localStorage.setItem("refreshToken", refresh);
         localStorage.setItem("userInfo", JSON.stringify(user));
+
+        refreshTokenMemory = refresh;
 
         const previousPage = document.referrer;
 
