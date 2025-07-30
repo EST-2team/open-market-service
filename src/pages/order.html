@@ -3,6 +3,32 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="HODU 마켓에서 주문할 상품을 최종 확인하고, 배송지 정보 입력 및 결제를 진행하는 페이지입니다."
+        />
+        <link rel="canonical" href="https://gimeast.com/src/pages/order.html" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="주문/결제하기 - HODU" />
+        <meta
+            property="og:description"
+            content="HODU 마켓에서 주문할 상품을 최종 확인하고 결제를 진행하세요."
+        />
+        <meta
+            property="og:url"
+            content="https://gimeast.com/src/pages/order.html"
+        />
+        <meta
+            property="og:image"
+            content="https://gimeast.com/src/assets/icons/Logo-hodu.png"
+        />
+
+        <link
+            rel="icon"
+            type="image/png"
+            href="../assets/icons/Logo-hodu.png"
+        />
         <link rel="stylesheet" href="../assets/css/style.css" />
         <title>주문/결제하기 - HODU</title>
     </head>
@@ -280,7 +306,11 @@
 
                         <div class="final-payment-info">
                             <h3>최종결제 정보</h3>
-                            <div class="final-payment-info-box">
+                            <div
+                                class="final-payment-info-box"
+                                aria-live="polite"
+                                aria-atomic="true"
+                            >
                                 <dl>
                                     <div>
                                         <dt>상품금액</dt>
