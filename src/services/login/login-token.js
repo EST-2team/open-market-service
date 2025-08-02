@@ -1,3 +1,5 @@
+import { getRefreshToken } from "./login-api.js";
+
 export function isTokenExpired(token) {
     if (!token) return true;
     const payload = JSON.parse(atob(token.split(".")[1]));
@@ -9,7 +11,7 @@ export async function getValidAccessToken() {
     const token = localStorage.getItem("accessToken");
 
     if (isTokenExpired(token)) {
-        const refresh = localStorage.getItem("refreshToken");
+        const refresh = getRefreshToken()
         const res = await fetch(
             "https://api.wenivops.co.kr/services/open-market/accounts/token/refresh/",
             {

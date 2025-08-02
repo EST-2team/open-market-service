@@ -31,7 +31,7 @@ async function renderOrderItems() {
     } else if (orderType === "direct_order") {
         orderData = await getDirectOrderItems();
     }
-    console.log(orderData);
+
     renderOrderItem(orderData);
 }
 function getTotalPriceWithShipping() {
