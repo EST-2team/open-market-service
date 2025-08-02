@@ -1,5 +1,6 @@
 import { signup } from "./signup-api.js";
 import { validateUsername } from "./signup-api.js";
+import { login } from "../login/login-api.js";
 
 // 각 필드별 에러 메시지 출력 함수
 function showErrorMessage(selector, message) {
@@ -303,6 +304,7 @@ export function setupFormValidation() {
         if (result.success) {
             alert("회원가입이 완료되었습니다.");
             signupForm.submit();
+            login();
             location.href = "/src/pages/product-list.html";
         } else if (result.error) {
             const error = result.error;
