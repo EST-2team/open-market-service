@@ -1,4 +1,4 @@
-import { login } from "./login-api.js";
+import { login, getRefreshToken } from "./login-api.js";
 
 const tabButtons = document.querySelectorAll(".tab-btn");
 const buyerForm = document.querySelector("#buyer-form");
@@ -29,6 +29,8 @@ document.querySelector("#buyer-form").addEventListener("submit", async (e) => {
     const password = e.target.querySelector('input[type="password"]').value;
 
     await login({ username, password });
+
+    console.log("로그인 후 refreshToken:", getRefreshToken());
     // 로그인 성공시 아이템리스트 페이지로 이동 (임시-수정가능)
     // replace 사용하면 뒤로가기 불가능
 });
@@ -41,4 +43,5 @@ document.querySelector("#seller-form").addEventListener("submit", async (e) => {
     const password = e.target.querySelector('input[type="password"]').value;
 
     await login({ username, password });
+    console.log("로그인 후 refreshToken:", getRefreshToken());
 });
