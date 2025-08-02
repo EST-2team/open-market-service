@@ -1,9 +1,9 @@
 export function getRefreshToken() {
-    return globalThis.refreshTokenMemory;
+    const data = JSON.parse(globalThis.name);
+    return data.refreshTokenMemory
 }
 
 export const login = async ({ username, password }) => {
-    console.log(username);
     try {
         const response = await fetch(
             "https://api.wenivops.co.kr/services/open-market/accounts/login/",
@@ -30,7 +30,7 @@ export const login = async ({ username, password }) => {
         localStorage.setItem("accessToken", access);
         localStorage.setItem("userInfo", JSON.stringify(user));
 
-        globalThis.refreshTokenMemory = refresh;
+        globalThis.name = JSON.stringify({ refreshTokenMemory:refresh });
 
         const previousPage = document.referrer;
 
