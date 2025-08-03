@@ -3,12 +3,13 @@ const $prevBtn = document.querySelector(".banner__prev-btn");
 const $nextBtn = document.querySelector(".banner__next-btn");
 const $bannerSlides = document.querySelector(".banner-slides");
 const $bannerSlide = document.querySelectorAll(".banner-slide");
+const $bannerListBtn = document.querySelectorAll(".banner-list__btn");
 
 // 배너 이미지 넣기
 function renderBanner(product) {
     product.forEach((product, i) => {
         $bannerSlide[i].style.backgroundImage = `url("${product.image}")`;
-
+        listColor();
         $bannerSlide[i].addEventListener("click", () => {
             location.href = `./product-details.html?id=${product.id}`;
         });
@@ -47,6 +48,7 @@ let currentIndex = 0; // 현재 배너 위치 인덱스
 function moveBanner(num) {
     $bannerSlides.style.transform = `translateX(${-num * 100}vw)`;
     currentIndex = num;
+    listColor();
 }
 
 // 이전 버튼 클릭 시 이전 배너로
@@ -63,4 +65,18 @@ $nextBtn.addEventListener("click", () => {
     }
 });
 
+// 배너 리스트 색상 표시
+function listColor() {
+    $bannerListBtn.forEach((_, i) => {
+        $bannerListBtn[i].style.backgroundColor =
+            i === currentIndex ? "#000" : "#fff";
+    });
+}
+
+// 배너 리스트 버튼 클릭 시 해당 배너로 이동
+$bannerListBtn.forEach((_, i) => {
+    $bannerListBtn[i].addEventListener("click", () => {
+        moveBanner(i);
+    });
+});
 export { renderBanner, intervalBanner };
