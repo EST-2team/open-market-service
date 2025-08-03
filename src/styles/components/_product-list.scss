@@ -1,6 +1,10 @@
 $background-color: #f2f2f2;
 $secondary-text-color: #767676;
 
+body {
+    overflow-x: hidden;
+}
+
 %banner-btn {
     position: absolute;
     width: 60px;
@@ -9,13 +13,9 @@ $secondary-text-color: #767676;
     transform: translate(0, -50%);
 }
 
-%banner-li-btn-round {
-    border-radius: 50%;
-}
-
 .banner {
     margin-top: 90px;
-    width: 100%;
+    width: 100vw;
     height: 500px;
     background-color: $background-color;
     position: relative;
@@ -23,11 +23,12 @@ $secondary-text-color: #767676;
     &__prev-btn {
         @extend %banner-btn;
         background-image: url("../../assets/icons/icon-swiper-1.svg");
+        z-index: 1;
     }
 
     &-wrap {
         overflow: hidden;
-        width: 100%;
+        width: 100vw;
     }
 
     &__next-btn {
@@ -46,29 +47,27 @@ $secondary-text-color: #767676;
         left: calc(50% - 27px);
     }
 
-    &-list .banner-list__btn1 {
-        background-color: #000;
-    }
-
     &-list li button {
-        @extend %banner-li-btn-round;
         width: 6px;
         height: 6px;
         background-color: #fff;
+        border-radius: 50%;
     }
 }
 
 .banner-slides {
     display: flex;
-    width: 500%;
+    width: 500vw;
     height: 500px;
+    transition: 0.6s;
 
     .banner-slide {
-        width: 100%;
+        width: 100vw;
         float: left;
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
+        cursor: pointer;
     }
 }
 
