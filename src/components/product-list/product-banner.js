@@ -33,7 +33,7 @@ function stopInterval() {
     clearInterval(intervalId);
 }
 
-// 배너에 마우스 오버 시 자동 슬라이드 멈춤
+// 배너에 마우스 호버 시 자동 슬라이드 멈춤
 $banner.addEventListener("mouseover", () => {
     stopInterval();
 });
